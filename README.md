@@ -1,3 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <td align="left">
+        :warning:
+      </td>
+      <td align="left" width="100%">
+          <strong>NOTICE</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">
+          This branch is for the <strong>Umbraco 8</strong> version of this package. For the Umbraco 8 package, see <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main"><strong>v2/main</strong></a> branch.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 # Limbo Block List
 
 This package extends the default block list property editor in Umbraco 9, making it possible to control the CLR type returned by our version of the block list property editor.
@@ -12,7 +32,15 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-*Not released yet.*
+Install via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/1.0.0) Package Manager:
+
+```
+Install-Package Limbo.Umbraco.BlockList -Version 1.0.0
+```
+
+Install Umbraco package:
+
+- https://our.umbraco.com/packages/developer-tools/limbo-block-list/
 
 ## Examples
 
