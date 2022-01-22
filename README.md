@@ -8,7 +8,7 @@ The default block list property editor exposes the value as an instance of `Bloc
 
 If you wish to interpret the `BlockListModel` a bit before rendering the block list on the website, there is a few different ways to go about this. With this package, you can select a *type converter* which is then used for converting `BlockListModel` to a desired type.
 
-For us at [**@limbo-works**](https://github.com/limbo-works), we find this particular usefull as we can use the *type converter* to control the output for our headless API.
+For us at [**@limbo-works**](https://github.com/limbo-works), we find this particular usefull as we can use a *type converter* to control the output for our headless API, thereby better being able to tailor the output for our frontenders.
 
 ## Installation
 
