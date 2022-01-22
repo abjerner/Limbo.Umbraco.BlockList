@@ -12,7 +12,20 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-*Not released yet.*
+The Umbraco 9 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/2.0.0). To install the package, you can use either .NET CLI:
+
+```
+dotnet add package Limbo.Umbraco.BlockList --version 2.0.0
+```
+
+or the older NuGet Package Manager:
+
+```
+Install-Package Limbo.Umbraco.BlockList -Version 2.0.0
+```
+
+**Umbraco 8**  
+For the Umbraco 8 version of this package, see the [**v1/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main) branch instead.
 
 ## Examples
 
