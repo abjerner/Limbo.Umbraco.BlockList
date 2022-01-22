@@ -1,12 +1,12 @@
 ﻿using Limbo.Umbraco.BlockList.Converters;
 using Skybrud.Essentials.Json.Extensions;
 using System;
-using Umbraco.Cms.Core.Logging;
-using Umbraco.Cms.Core.Models.Blocks;
-using Umbraco.Cms.Core.Models.PublishedContent;
-using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
-using Umbraco.Extensions;
+using Umbraco.Core;
+using Umbraco.Core.Logging;
+using Umbraco.Core.Models.Blocks;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Web.PropertyEditors.ValueConverters;
 
 #pragma warning disable 1591
 

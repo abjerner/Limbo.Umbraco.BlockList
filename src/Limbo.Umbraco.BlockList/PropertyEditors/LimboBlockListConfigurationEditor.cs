@@ -1,12 +1,7 @@
-﻿using Umbraco.Cms.Core.IO;
-using Umbraco.Cms.Core.PropertyEditors;
+﻿using Umbraco.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.BlockList.PropertyEditors {
 
-    internal class LimboBlockListConfigurationEditor : ConfigurationEditor<LimboBlockListConfiguration> {
-
-        public LimboBlockListConfigurationEditor(IIOHelper ioHelper) : base(ioHelper) { }
-
-    }
+    internal class LimboBlockListConfigurationEditor : ConfigurationEditor<LimboBlockListConfiguration> { }
 
 }

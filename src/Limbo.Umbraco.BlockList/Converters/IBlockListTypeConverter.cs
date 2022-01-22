@@ -1,8 +1,8 @@
 ﻿using Limbo.Umbraco.BlockList.PropertyEditors;
 using Newtonsoft.Json;
 using System;
-using Umbraco.Cms.Core.Models.Blocks;
-using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Core.Models.Blocks;
+using Umbraco.Core.Models.PublishedContent;
 
 namespace Limbo.Umbraco.BlockList.Converters {
 

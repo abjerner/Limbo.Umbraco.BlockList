@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Web.PropertyEditors;
 
 namespace Limbo.Umbraco.BlockList.PropertyEditors {
 

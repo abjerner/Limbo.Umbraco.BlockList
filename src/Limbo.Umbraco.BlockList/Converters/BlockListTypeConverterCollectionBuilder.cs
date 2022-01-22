@@ -1,4 +1,4 @@
-﻿using Umbraco.Cms.Core.Composing;
+﻿using Umbraco.Core.Composing;
 
 namespace Limbo.Umbraco.BlockList.Converters {
 

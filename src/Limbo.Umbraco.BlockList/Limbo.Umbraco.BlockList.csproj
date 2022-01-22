@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <ContentTargetFolders>content</ContentTargetFolders>
   </PropertyGroup>
 
@@ -12,7 +12,7 @@
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2022</Copyright>
     <Title>Limbo Block List</Title>
-    <Description>Extended block list editor for Umbraco 9</Description>
+    <Description>Extended block list editor for Umbraco 8.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
@@ -27,20 +27,18 @@
   <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.35" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="9.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="9.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="9.0.0" />
+    <PackageReference Include="UmbracoCms.Core" Version="8.7.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="UmbracoCms.Web" Version="8.7.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   
   <!-- Include backoffice assets -->
   <ItemGroup>
     <Content Include="App_Plugins\Limbo.Umbraco.BlockList\**\*.html" />
     <Content Include="App_Plugins\Limbo.Umbraco.BlockList\**\*.js" />
-  </ItemGroup>
-
-  <!-- Include the targets file -->
-  <ItemGroup>
-    <Content Include="../build/$(AssemblyName).targets" PackagePath="build\$(AssemblyName).targets" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->

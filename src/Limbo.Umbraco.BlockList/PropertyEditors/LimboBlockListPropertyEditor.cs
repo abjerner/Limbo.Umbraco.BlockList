@@ -1,5 +1,9 @@
-﻿using Umbraco.Cms.Core.IO;
-using Umbraco.Cms.Core.PropertyEditors;
+﻿using ClientDependency.Core;
+using System;
+using Umbraco.Core.Logging;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Core.Services;
+using Umbraco.Web.PropertyEditors;
 
 #pragma warning disable 1591
 
@@ -9,9 +13,8 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
     /// Represents a block list property editor.
     /// </summary>
     [DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
+    [PropertyEditorAsset(ClientDependencyType.Javascript, "/App_Plugins/Limbo.Umbraco.BlockList/TypeConverter.js")]
     public class LimboBlockListPropertyEditor : BlockEditorPropertyEditor {
-
-        private readonly IIOHelper _ioHelper;
 
         #region Constants
 
@@ -27,15 +30,16 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
 
         #region Constructors
 
-        public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, PropertyEditorCollection propertyEditors, IIOHelper ioHelper) : base(dataValueEditorFactory, propertyEditors) {
-            _ioHelper = ioHelper;
-        }
+        public LimboBlockListPropertyEditor(ILogger logger, Lazy<PropertyEditorCollection> propertyEditors,
+            IDataTypeService dataTypeService, IContentTypeService contentTypeService, ILocalizedTextService localizedTextService)
+            : base(logger, propertyEditors, dataTypeService, contentTypeService, localizedTextService)
+        { }
 
         #endregion
 
         #region Member methods
 
-        protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor(_ioHelper);
+        protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor();
 
         #endregion
 

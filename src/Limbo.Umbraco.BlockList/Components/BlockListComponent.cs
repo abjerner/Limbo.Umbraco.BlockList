@@ -1,15 +1,25 @@
-﻿using Umbraco.Cms.Core.Events;
-using Umbraco.Cms.Core.Notifications;
+﻿using System.Web.Http.Filters;
+using Umbraco.Core.Composing;
+using Umbraco.Web.Editors;
+using Umbraco.Web.Models.ContentEditing;
 
 #pragma warning disable 1591
 
-namespace Limbo.Umbraco.BlockList.NotificationHandlers {
+namespace Limbo.Umbraco.BlockList.Components {
+    
+    public class BlockListComponent : IComponent {
+        
+        public void Initialize() {
+            EditorModelEventManager.SendingContentModel += EditorModelEventManagerOnSendingContentModel;
+        }
 
-    public class SendingContentHandler : INotificationHandler<SendingContentNotification> {
-
-        public void Handle(SendingContentNotification notification) {
-
-            foreach (var variant in notification.Content.Variants) {
+        public void Terminate() {
+            EditorModelEventManager.SendingContentModel -= EditorModelEventManagerOnSendingContentModel;
+        }
+        
+        private void EditorModelEventManagerOnSendingContentModel(HttpActionExecutedContext sender, EditorModelEventArgs<ContentItemDisplay> e) {
+            
+            foreach (var variant in e.Model.Variants) {
 
                 foreach (var tab in variant.Tabs) {
 
