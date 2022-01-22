@@ -12,7 +12,7 @@ namespace Limbo.Umbraco.BlockList.Composers {
     public sealed class BlockListComposer : IComposer {
 
         public void Compose(IUmbracoBuilder builder) {
-            
+
             builder
                 .AddNotificationHandler<SendingContentNotification, SendingContentHandler>()
                 .WithCollectionBuilder<BlockListTypeConverterCollectionBuilder>()
