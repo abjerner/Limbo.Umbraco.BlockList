@@ -1,0 +1,26 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <LimboUmbracoBlockListContentFilesPath>$(MSBuildThisFileDirectory)..\content\App_Plugins\Limbo.Umbraco.BlockList\**\*.*</LimboUmbracoBlockListContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyLimboUmbracoBlockListAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <LimboUmbracoBlockListContentFiles Include="$(LimboUmbracoBlockListContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Limbo.Umbraco.BlockList files: $(LimboUmbracoBlockListContentFilesPath) - #@(LimboUmbracoBlockListContentFiles->Count()) files"  Importance="high" />
+    <Copy
+      SourceFiles="@(LimboUmbracoBlockListContentFiles)"
+      DestinationFiles="@(LimboUmbracoBlockListContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Limbo.Umbraco.BlockList\%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearLimboUmbracoBlockListAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <LimboUmbracoBlockListDir Include="$(MSBuildProjectDirectory)\App_Plugins\Limbo.Umbraco.BlockList\" />
+    </ItemGroup>
+    <Message Text="Clear old Limbo.Umbraco.BlockList files"  Importance="high" />
+    <RemoveDir Directories="@(LimboUmbracoBlockListDir)"  />
+  </Target>
+
+</Project>
