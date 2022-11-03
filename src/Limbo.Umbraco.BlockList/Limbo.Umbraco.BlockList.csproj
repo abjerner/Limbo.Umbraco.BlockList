@@ -19,7 +19,7 @@
 
   <!-- Information for the NuGet package -->
   <PropertyGroup>
-    <PackageTags>Skybrud, Limbo, Umbraco, Block, List</PackageTags>
+    <PackageTags>Skybrud, Limbo, Umbraco, Block, List, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
