@@ -1,5 +1,4 @@
 ﻿using Limbo.Umbraco.BlockList.PropertyEditors;
-using Newtonsoft.Json;
 using System;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
@@ -14,8 +13,12 @@ namespace Limbo.Umbraco.BlockList.Converters {
         /// <summary>
         /// Gets the name of the converter.
         /// </summary>
-        [JsonProperty("name")]
         string Name { get; }
+
+        /// <summary>
+        /// Gets the name of the converter.
+        /// </summary>
+        public string? Icon => null;
 
         /// <summary>
         /// Returns the CLR type for this type converter.
@@ -33,7 +36,7 @@ namespace Limbo.Umbraco.BlockList.Converters {
         /// <param name="source">The <see cref="BlockListModel"/> value to be converted.</param>
         /// <param name="config">The configuration of the parent data type.</param>
         /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
-        object Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel source, LimboBlockListConfiguration config);
+        object Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
 
     }
 

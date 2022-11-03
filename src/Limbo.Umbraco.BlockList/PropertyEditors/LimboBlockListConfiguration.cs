@@ -12,7 +12,7 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
         /// Gets a reference to a <see cref="JObject"/> with information about the selected type converter.
         /// </summary>
         [ConfigurationField("typeConverter", "Type Converter", "/App_Plugins/Limbo.Umbraco.BlockList/TypeConverter.html", Description = "Select a type converter.")]
-        public JObject TypeConverter { get; set; }
+        public string? TypeConverter { get; set; }
 
         /// <summary>
         /// Gets whether the block list editor is configured as a single picker (if max blocks is set to <c>1</c>).

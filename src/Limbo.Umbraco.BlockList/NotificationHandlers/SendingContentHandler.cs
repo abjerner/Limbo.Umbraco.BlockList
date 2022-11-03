@@ -13,6 +13,8 @@ namespace Limbo.Umbraco.BlockList.NotificationHandlers {
 
                 foreach (var tab in variant.Tabs) {
 
+                    if (tab.Properties is null) continue;
+
                     foreach (var property in tab.Properties) {
 
                         // See: https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Web.UI.Client/src/views/propertyeditors/blocklist/umbBlockListPropertyEditor.component.js#L142
