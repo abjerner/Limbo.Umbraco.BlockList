@@ -1,6 +1,6 @@
 # Limbo Block List
 
-This package extends the default block list property editor in Umbraco 9, making it possible to control the CLR type returned by our version of the block list property editor.
+This package extends the default block list property editor in Umbraco, making it possible to control the CLR type returned by our version of the block list property editor.
 
 ## But why?
 
@@ -12,16 +12,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.0). To install the package, you can use either .NET CLI:
+The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.1). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.0
+dotnet add package Limbo.Umbraco.BlockList --version 3.0.1
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.0
+Install-Package Limbo.Umbraco.BlockList -Version 3.0.1
 ```
 
 **Umbraco 9**  
