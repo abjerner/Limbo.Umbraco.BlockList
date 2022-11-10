@@ -36,7 +36,7 @@ namespace Limbo.Umbraco.BlockList.Converters {
         /// <param name="source">The <see cref="BlockListModel"/> value to be converted.</param>
         /// <param name="config">The configuration of the parent data type.</param>
         /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
-        object Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
+        object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
 
     }
 
