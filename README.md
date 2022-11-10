@@ -2,6 +2,10 @@
 
 This package extends the default block list property editor in Umbraco, making it possible to control the CLR type returned by our version of the block list property editor.
 
+
+
+<br /><br />
+
 ## But why?
 
 The default block list property editor exposes the value as an instance of `BlockListModel` representing the invividual blocks as they are added by users in the backoffice.
@@ -9,6 +13,10 @@ The default block list property editor exposes the value as an instance of `Bloc
 If you wish to interpret the `BlockListModel` a bit before rendering the block list on the website, there is a few different ways to go about this. With this package, you can select a *type converter* which is then used for converting `BlockListModel` to a desired type.
 
 For us at [**@limbo-works**](https://github.com/limbo-works), we find this particular usefull as we can use a *type converter* to control the output for our headless API, thereby better being able to tailor the output for our frontenders.
+
+
+
+<br /><br />
 
 ## Installation
 
@@ -29,6 +37,10 @@ For the Umbraco 9 version of this package, see the [**v2/main**](https://github.
 
 **Umbraco 8**  
 For the Umbraco 8 version of this package, see the [**v1/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main) branch instead.
+
+
+
+<br /><br />
 
 ## Examples
 
