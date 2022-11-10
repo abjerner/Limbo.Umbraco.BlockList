@@ -22,6 +22,7 @@
     <PackageTags>Skybrud, Limbo, Umbraco, Block, List, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>Limbo.png</PackageIcon>
+    <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.BlockList</RepositoryUrl>
   </PropertyGroup>
@@ -34,9 +35,10 @@
     <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.0.0" />
   </ItemGroup>
 
-  <!-- Include package icon for NuGet -->
+  <!-- Include package icon and README for the NuGet -->
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\NUGET.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
