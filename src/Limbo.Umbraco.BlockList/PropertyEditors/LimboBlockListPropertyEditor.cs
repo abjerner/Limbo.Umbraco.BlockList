@@ -15,13 +15,13 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
 
         #region Constants
 
-        internal const string EditorAlias = "Limbo.Umbraco.BlockList";
+        public const string EditorAlias = "Limbo.Umbraco.BlockList";
 
-        internal const string EditorName = "Limbo Block List";
+        public const string EditorName = "Limbo Block List";
 
-        internal const string EditorView = "blocklist";
+        public const string EditorView = "blocklist";
 
-        internal const string EditorIcon = "icon-thumbnail-list color-limbo";
+        public const string EditorIcon = "icon-thumbnail-list color-limbo";
 
         #endregion
 
