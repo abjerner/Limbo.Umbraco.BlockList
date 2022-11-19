@@ -27,12 +27,8 @@
   <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.35" />
-    <PackageReference Include="UmbracoCms.Core" Version="8.7.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="UmbracoCms.Web" Version="8.7.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="UmbracoCms.Core" Version="[8.7.0,9.0)" />
+    <PackageReference Include="UmbracoCms.Web" Version="[8.7.0,9.0)" />
   </ItemGroup>
   
   <!-- Include backoffice assets -->
