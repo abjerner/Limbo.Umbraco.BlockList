@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>3.0.1</VersionPrefix>
+    <VersionPrefix>3.0.2</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2022</Copyright>
     <Title>Limbo Block List</Title>
-    <Description>Extended block list editor for Umbraco 10.</Description>
+    <Description>Extended block list editor for Umbraco.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
