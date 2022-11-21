@@ -32,10 +32,10 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-Install via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/1.0.0) Package Manager:
+Install via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/1.0.2) Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 1.0.0
+Install-Package Limbo.Umbraco.BlockList -Version 1.0.2
 ```
 
 Install Umbraco package:
