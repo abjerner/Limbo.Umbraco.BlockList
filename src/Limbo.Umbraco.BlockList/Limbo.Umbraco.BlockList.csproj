@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © 2022</Copyright>
     <Title>Limbo Block List</Title>
-    <Description>Extended block list editor for Umbraco 8.</Description>
+    <Description>Extended block list editor for Umbraco.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
