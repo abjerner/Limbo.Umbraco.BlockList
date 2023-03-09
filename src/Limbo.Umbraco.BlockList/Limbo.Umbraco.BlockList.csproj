@@ -1,4 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <LangVersion>10.0</LangVersion>
