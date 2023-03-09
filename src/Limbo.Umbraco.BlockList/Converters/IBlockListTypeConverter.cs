@@ -11,6 +11,11 @@ namespace Limbo.Umbraco.BlockList.Converters {
     public interface IBlockListTypeConverter {
 
         /// <summary>
+        /// Gets the alias of the converter.
+        /// </summary>
+        public sealed string? Alias => BlockListUtils.GetTypeAlias(GetType());
+
+        /// <summary>
         /// Gets the name of the converter.
         /// </summary>
         string Name { get; }

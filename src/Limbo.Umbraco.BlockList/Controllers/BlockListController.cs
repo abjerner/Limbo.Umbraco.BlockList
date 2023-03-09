@@ -22,7 +22,7 @@ namespace Limbo.Umbraco.BlockList.Controllers {
         public object GetTypeConverters() {
             return _converterCollection.ToArray().Select(x => new {
                 assembly = x.GetType().Assembly.FullName,
-                key = x.GetType().AssemblyQualifiedName,
+                alias = BlockListUtils.GetTypeAlias(x.GetType()),
                 icon = x.Icon ?? $"icon-box color-{x.GetType().Assembly.FullName?.Split('.')[0].ToLower()}",
                 name = x.Name,
                 description = x.GetType().AssemblyQualifiedName?.Split(new[] { ", Version" }, StringSplitOptions.None)[0] + ".dll"

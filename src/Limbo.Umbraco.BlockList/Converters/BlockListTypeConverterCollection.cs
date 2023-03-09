@@ -17,15 +17,15 @@ namespace Limbo.Umbraco.BlockList.Converters {
         public BlockListTypeConverterCollection(Func<IEnumerable<IBlockListTypeConverter>> items) : base(items) {
             _lookup = new Dictionary<string, IBlockListTypeConverter>(StringComparer.OrdinalIgnoreCase);
             foreach (IBlockListTypeConverter item in this) {
-                string? typeName = item.GetType().AssemblyQualifiedName;
-                if (typeName != null && _lookup.ContainsKey(typeName) == false) {
-                    _lookup.Add(typeName, item);
+                string? typeAlias = item.Alias;
+                if (typeAlias != null && _lookup.ContainsKey(typeAlias) == false) {
+                    _lookup.Add(typeAlias, item);
                 }
             }
         }
 
         public bool TryGet(string typeName, [NotNullWhen(true)] out IBlockListTypeConverter? item) {
-            return _lookup.TryGetValue(typeName, out item);
+            return _lookup.TryGetValue(BlockListUtils.RemoveVersion(typeName), out item);
         }
 
     }
