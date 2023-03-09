@@ -34,6 +34,26 @@ namespace Limbo.Umbraco.BlockList {
         /// </summary>
         public static readonly SemVersion SemVersion = InformationalVersion;
 
+        /// <summary>
+        /// Gets the URL of the GitHub repository for this package.
+        /// </summary>
+        public const string GitHubUrl = "https://github.com/abjerner/Limbo.Umbraco.BlockList";
+
+        /// <summary>
+        /// Gets the URL of the issue tracker for this package.
+        /// </summary>
+        public const string IssuesUrl = "https://github.com/abjerner/Limbo.Umbraco.BlockList/issues";
+
+        /// <summary>
+        /// Gets the website URL of the package.
+        /// </summary>
+        public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v3/";
+
+        /// <summary>
+        /// Gets the URL of the documentation for this package.
+        /// </summary>
+        public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v3/docs/";
+
     }
 
 }

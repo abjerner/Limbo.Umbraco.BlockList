@@ -12,15 +12,17 @@
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2022</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Title>Limbo Block List</Title>
-    <Description>Extended block list editor for Umbraco.</Description>
+    <Description>Extended block list editor for Umbraco 10+.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
   <PropertyGroup>
+    <PackageId>Limbo.Umbraco.BlockList</PackageId>
     <PackageTags>Skybrud, Limbo, Umbraco, Block, List, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://packages.limbo.works/limbo.umbraco.blocklist/v3/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
