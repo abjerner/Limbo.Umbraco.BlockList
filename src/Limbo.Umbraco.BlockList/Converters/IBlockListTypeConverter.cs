@@ -3,6 +3,8 @@ using System;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
+// ReSharper disable ReturnTypeCanBeNotNullable
+
 namespace Limbo.Umbraco.BlockList.Converters {
 
     /// <summary>
@@ -42,6 +44,16 @@ namespace Limbo.Umbraco.BlockList.Converters {
         /// <param name="config">The configuration of the parent data type.</param>
         /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
         object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
+
+        /// <summary>
+        /// Converts the specified <see cref="BlockListItem"/> <paramref name="source"/> value to the desired type.
+        /// </summary>
+        /// <param name="owner">The <see cref="IPublishedElement"/> holding the property with the block list.</param>
+        /// <param name="propertyType">The property type.</param>
+        /// <param name="source">The <see cref="BlockListItem"/> value to be converted.</param>
+        /// <param name="config">The configuration of the parent data type.</param>
+        /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
+        object? ConvertItem(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListItem source, LimboBlockListConfiguration config) => throw new InvalidOperationException("The selected type converter does not support single block mode.");
 
     }
 

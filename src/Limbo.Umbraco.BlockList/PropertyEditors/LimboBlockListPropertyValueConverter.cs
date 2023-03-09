@@ -1,5 +1,4 @@
 ﻿using Limbo.Umbraco.BlockList.Converters;
-using Skybrud.Essentials.Json.Extensions;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Umbraco.Cms.Core.Logging;
@@ -57,14 +56,20 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
         /// <inheritdoc />
         public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
-            // Get the BlockListModel value from the parent value converter
-            BlockListModel? value = base.ConvertIntermediateToObject(owner, propertyType, referenceCacheLevel, inter, preview) as BlockListModel;
+            // Get the value as returned by Umbraco's value converter
+            object? value = base.ConvertIntermediateToObject(owner, propertyType, referenceCacheLevel, inter, preview);
 
             // Return "value" if the data type isn't configured with an item converter
             if (propertyType.DataType.Configuration is not LimboBlockListConfiguration config) return value;
 
             // Return "value" if item converter wasn't found, otherwise call the converter
-            return TryGetConverter(config, out IBlockListTypeConverter? converter) ? converter.Convert(owner, propertyType, value, config) : value;
+            if (!TryGetConverter(config, out IBlockListTypeConverter? converter)) return value;
+
+            // If value is a "BlockListItem" (with single block mode activated), we call "ConvertItem" instead
+            if (value is BlockListItem item) return converter.ConvertItem(owner, propertyType, item, config);
+
+            // For anything else (even if null), we call "Convert"
+            return converter.Convert(owner, propertyType, value as BlockListModel, config);
 
         }
 
