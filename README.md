@@ -2,6 +2,27 @@
 
 This package extends the default block list property editor in Umbraco, making it possible to control the CLR type returned by our version of the block list property editor.
 
+<table>
+  <tr>
+    <td><strong>License:</strong></td>
+    <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
+  </tr>
+  <tr>
+    <td><strong>Umbraco:</strong></td>
+    <td>
+      Umbraco 10, 11 and 12
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">Umbraco 9</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">Umbraco 8</a>)</sup></sub>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Target Framework:</strong></td>
+    <td>
+      .NET 6
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">.NET 5</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">.NET 4.7.2</a>)</sup></sub>
+    </td>
+  </tr>
+</table>
+
 
 
 <br /><br />
@@ -20,16 +41,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.1). To install the package, you can use either .NET CLI:
+The Umbraco 10+ version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.4). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.1
+dotnet add package Limbo.Umbraco.BlockList --version 3.0.4
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.1
+Install-Package Limbo.Umbraco.BlockList -Version 3.0.4
 ```
 
 **Umbraco 9**  
@@ -54,24 +75,23 @@ using Limbo.Umbraco.BlockList.PropertyEditors;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
-namespace UmbracoNineTests.BlockList {
+namespace UmbracoTests.BlockList {
     
     public class BlockListTypeConverter : IBlockListTypeConverter {
-        
+
         public string Name => "Block Item Converter";
 
         public Type GetType(IPublishedPropertyType propertyType, LimboBlockListConfiguration config) {
-            return config.IsSinglePicker ? typeof(BlockItem) : typeof(BlockItem[]);
+            return config.IsSinglePicker ? typeof(BlockItem) : typeof(IReadOnlyList<BlockItem>);
         }
 
-        public object Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel source,
-            
-            LimboBlockListConfiguration config) {
+        public object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config) {
+
             if (source == null) return config.IsSinglePicker ? null : Array.Empty<BlockItem>();
 
             if (!config.IsSinglePicker) return source.Select(x => new BlockItem(x)).ToArray();
 
-            BlockListItem first = source.FirstOrDefault();
+            BlockListItem? first = source.FirstOrDefault();
             return first == null ? null : new BlockItem(first);
 
         }
@@ -86,20 +106,20 @@ using System;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Extensions;
 
-namespace UmbracoNineTests.BlockList {
+namespace UmbracoTests.BlockList {
     
     public class BlockItem {
-        
-        public Guid Key { get; }
 
         public Guid ContentKey { get; }
 
         public string Type { get; }
 
+        public IPublishedElement Content { get; }
+
         public BlockItem(BlockListItem blockListItem) {
-            Key = blockListItem.AsGuid();
             ContentKey = blockListItem.Content.Key;
             Type = blockListItem.Content.ContentType.Alias;
+            Content = blockListItem.Content;
         }
 
     }
