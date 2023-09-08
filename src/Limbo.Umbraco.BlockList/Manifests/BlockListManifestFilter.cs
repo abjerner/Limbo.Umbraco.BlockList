@@ -14,6 +14,7 @@ namespace Limbo.Umbraco.BlockList.Manifests {
                 Version = BlockListPackage.InformationalVersion,
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
+                    $"/App_Plugins/{BlockListPackage.Alias}/CacheLevel.js",
                     $"/App_Plugins/{BlockListPackage.Alias}/TypeConverter.js",
                     $"/App_Plugins/{BlockListPackage.Alias}/TypeConverterOverlay.js"
                 },

@@ -50,7 +50,13 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
 
         /// <inheritdoc />
         public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType) {
-            return PropertyCacheLevel.Elements;
+
+            // Default to "Elements" if configuration doesn't match (probably wouldn't happen)
+            if (propertyType.DataType.Configuration is not LimboBlockListConfiguration config) return PropertyCacheLevel.Elements;
+
+            // Return the configured cachwe level (or "Elements" if not specified)
+            return config.CacheLevel ?? PropertyCacheLevel.Elements;
+
         }
 
         /// <inheritdoc />

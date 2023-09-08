@@ -15,6 +15,12 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors {
         public string? TypeConverter { get; set; }
 
         /// <summary>
+        /// Gets or sets the property cache level of the underlying property value converter. Defaults to <see cref="PropertyCacheLevel.Elements"/> if not specified.
+        /// </summary>
+        [ConfigurationField("cacheLevel", "Cache Level", "/App_Plugins/Limbo.Umbraco.BlockList/CacheLevel.html", Description = "Select the cache level of the underlying property value converter.")]
+        public PropertyCacheLevel? CacheLevel { get; set; }
+
+        /// <summary>
         /// Gets whether the block list editor is configured as a single picker (if max blocks is set to <c>1</c>).
         /// </summary>
         public bool IsSinglePicker => ValidationLimit.Max == 1;
