@@ -43,16 +43,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10+ version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.4). To install the package, you can use either .NET CLI:
+The Umbraco 10+ version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.5). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.4
+dotnet add package Limbo.Umbraco.BlockList --version 3.0.5
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.4
+Install-Package Limbo.Umbraco.BlockList -Version 3.0.5
 ```
 
 **Umbraco 9**  
