@@ -10,7 +10,7 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors;
 /// Represents a block list property editor.
 /// </summary>
 [DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
-public class LimboBlockListPropertyEditor : BlockEditorPropertyEditor {
+public class LimboBlockListPropertyEditor : BlockListPropertyEditorBase {
 
     private readonly IIOHelper _ioHelper;
     private readonly IEditorConfigurationParser _editorConfigurationParser;
@@ -29,7 +29,7 @@ public class LimboBlockListPropertyEditor : BlockEditorPropertyEditor {
 
     #region Constructors
 
-    public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, PropertyEditorCollection propertyEditors, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, propertyEditors) {
+    public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IBlockValuePropertyIndexValueFactory blockValuePropertyIndexValueFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, blockValuePropertyIndexValueFactory) {
         _ioHelper = ioHelper;
         _editorConfigurationParser = editorConfigurationParser;
     }

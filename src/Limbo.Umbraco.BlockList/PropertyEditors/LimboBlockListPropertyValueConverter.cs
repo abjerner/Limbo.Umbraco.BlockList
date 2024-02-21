@@ -1,11 +1,13 @@
 ﻿using Limbo.Umbraco.BlockList.Converters;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Umbraco.Cms.Core.DeliveryApi;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 
 #pragma warning disable 1591
@@ -19,7 +21,10 @@ public class LimboBlockListPropertyValueConverter : BlockListPropertyValueConver
     #region Constructors
 
     public LimboBlockListPropertyValueConverter(IProfilingLogger proflog, BlockEditorConverter blockConverter,
-        BlockListTypeConverterCollection converterCollection) : base(proflog, blockConverter) {
+        BlockListTypeConverterCollection converterCollection,
+        IContentTypeService contentTypeService, IApiElementBuilder apiElementBuilder, BlockListPropertyValueConstructorCache constructorCache)
+        : base(proflog, blockConverter, contentTypeService, apiElementBuilder, constructorCache)
+    {
         _converterCollection = converterCollection;
     }
 
