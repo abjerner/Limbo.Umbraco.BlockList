@@ -4,44 +4,42 @@ using Umbraco.Cms.Core.Services;
 
 #pragma warning disable 1591
 
-namespace Limbo.Umbraco.BlockList.PropertyEditors {
+namespace Limbo.Umbraco.BlockList.PropertyEditors;
 
-    /// <summary>
-    /// Represents a block list property editor.
-    /// </summary>
-    [DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
-    public class LimboBlockListPropertyEditor : BlockEditorPropertyEditor {
+/// <summary>
+/// Represents a block list property editor.
+/// </summary>
+[DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
+public class LimboBlockListPropertyEditor : BlockEditorPropertyEditor {
 
-        private readonly IIOHelper _ioHelper;
-        private readonly IEditorConfigurationParser _editorConfigurationParser;
+    private readonly IIOHelper _ioHelper;
+    private readonly IEditorConfigurationParser _editorConfigurationParser;
 
-        #region Constants
+    #region Constants
 
-        public const string EditorAlias = "Limbo.Umbraco.BlockList";
+    public const string EditorAlias = "Limbo.Umbraco.BlockList";
 
-        public const string EditorName = "Limbo Block List";
+    public const string EditorName = "Limbo Block List";
 
-        public const string EditorView = "blocklist";
+    public const string EditorView = "blocklist";
 
-        public const string EditorIcon = "icon-thumbnail-list color-limbo";
+    public const string EditorIcon = "icon-thumbnail-list color-limbo";
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, PropertyEditorCollection propertyEditors, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, propertyEditors) {
-            _ioHelper = ioHelper;
-            _editorConfigurationParser = editorConfigurationParser;
-        }
-
-        #endregion
-
-        #region Member methods
-
-        protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor(_ioHelper, _editorConfigurationParser);
-
-        #endregion
-
+    public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, PropertyEditorCollection propertyEditors, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, propertyEditors) {
+        _ioHelper = ioHelper;
+        _editorConfigurationParser = editorConfigurationParser;
     }
+
+    #endregion
+
+    #region Member methods
+
+    protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor(_ioHelper, _editorConfigurationParser);
+
+    #endregion
 
 }

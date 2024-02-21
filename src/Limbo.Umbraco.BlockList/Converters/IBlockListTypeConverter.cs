@@ -5,56 +5,54 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 
 // ReSharper disable ReturnTypeCanBeNotNullable
 
-namespace Limbo.Umbraco.BlockList.Converters {
+namespace Limbo.Umbraco.BlockList.Converters;
+
+/// <summary>
+/// Interface describing a type converter for <see cref="BlockListModel"/>.
+/// </summary>
+public interface IBlockListTypeConverter {
 
     /// <summary>
-    /// Interface describing a type converter for <see cref="BlockListModel"/>.
+    /// Gets the alias of the converter.
     /// </summary>
-    public interface IBlockListTypeConverter {
+    public sealed string? Alias => BlockListUtils.GetTypeAlias(GetType());
 
-        /// <summary>
-        /// Gets the alias of the converter.
-        /// </summary>
-        public sealed string? Alias => BlockListUtils.GetTypeAlias(GetType());
+    /// <summary>
+    /// Gets the name of the converter.
+    /// </summary>
+    string Name { get; }
 
-        /// <summary>
-        /// Gets the name of the converter.
-        /// </summary>
-        string Name { get; }
+    /// <summary>
+    /// Gets the name of the converter.
+    /// </summary>
+    public string? Icon => null;
 
-        /// <summary>
-        /// Gets the name of the converter.
-        /// </summary>
-        public string? Icon => null;
+    /// <summary>
+    /// Returns the CLR type for this type converter.
+    /// </summary>
+    /// <param name="propertyType">The property type.</param>
+    /// <param name="config">The configuration of the parent data type.</param>
+    /// <returns>An instance of <see cref="Type"/>.</returns>
+    Type GetType(IPublishedPropertyType propertyType, LimboBlockListConfiguration config);
 
-        /// <summary>
-        /// Returns the CLR type for this type converter.
-        /// </summary>
-        /// <param name="propertyType">The property type.</param>
-        /// <param name="config">The configuration of the parent data type.</param>
-        /// <returns>An instance of <see cref="Type"/>.</returns>
-        Type GetType(IPublishedPropertyType propertyType, LimboBlockListConfiguration config);
+    /// <summary>
+    /// Converts the <see cref="BlockListModel"/> <paramref name="source"/> value to the desired type.
+    /// </summary>
+    /// <param name="owner">The <see cref="IPublishedElement"/> holding the property with the block list.</param>
+    /// <param name="propertyType">The property type.</param>
+    /// <param name="source">The <see cref="BlockListModel"/> value to be converted.</param>
+    /// <param name="config">The configuration of the parent data type.</param>
+    /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
+    object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
 
-        /// <summary>
-        /// Converts the <see cref="BlockListModel"/> <paramref name="source"/> value to the desired type.
-        /// </summary>
-        /// <param name="owner">The <see cref="IPublishedElement"/> holding the property with the block list.</param>
-        /// <param name="propertyType">The property type.</param>
-        /// <param name="source">The <see cref="BlockListModel"/> value to be converted.</param>
-        /// <param name="config">The configuration of the parent data type.</param>
-        /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
-        object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListModel? source, LimboBlockListConfiguration config);
-
-        /// <summary>
-        /// Converts the specified <see cref="BlockListItem"/> <paramref name="source"/> value to the desired type.
-        /// </summary>
-        /// <param name="owner">The <see cref="IPublishedElement"/> holding the property with the block list.</param>
-        /// <param name="propertyType">The property type.</param>
-        /// <param name="source">The <see cref="BlockListItem"/> value to be converted.</param>
-        /// <param name="config">The configuration of the parent data type.</param>
-        /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
-        object? ConvertItem(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListItem source, LimboBlockListConfiguration config) => throw new InvalidOperationException("The selected type converter does not support single block mode.");
-
-    }
+    /// <summary>
+    /// Converts the specified <see cref="BlockListItem"/> <paramref name="source"/> value to the desired type.
+    /// </summary>
+    /// <param name="owner">The <see cref="IPublishedElement"/> holding the property with the block list.</param>
+    /// <param name="propertyType">The property type.</param>
+    /// <param name="source">The <see cref="BlockListItem"/> value to be converted.</param>
+    /// <param name="config">The configuration of the parent data type.</param>
+    /// <returns>The desired output value based on the <see cref="BlockListModel"/>.</returns>
+    object? ConvertItem(IPublishedElement owner, IPublishedPropertyType propertyType, BlockListItem source, LimboBlockListConfiguration config) => throw new InvalidOperationException("The selected type converter does not support single block mode.");
 
 }

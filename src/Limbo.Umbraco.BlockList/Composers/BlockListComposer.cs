@@ -7,22 +7,20 @@ using Umbraco.Cms.Core.Notifications;
 
 #pragma warning disable 1591
 
-namespace Limbo.Umbraco.BlockList.Composers {
+namespace Limbo.Umbraco.BlockList.Composers;
 
-    public sealed class BlockListComposer : IComposer {
+public sealed class BlockListComposer : IComposer {
 
-        public void Compose(IUmbracoBuilder builder) {
+    public void Compose(IUmbracoBuilder builder) {
 
-            builder
-                .AddNotificationHandler<SendingContentNotification, SendingContentHandler>()
-                .WithCollectionBuilder<BlockListTypeConverterCollectionBuilder>()
-                .Add(() => builder.TypeLoader.GetTypes<IBlockListTypeConverter>());
+        builder
+            .AddNotificationHandler<SendingContentNotification, SendingContentHandler>()
+            .WithCollectionBuilder<BlockListTypeConverterCollectionBuilder>()
+            .Add(() => builder.TypeLoader.GetTypes<IBlockListTypeConverter>());
 
-            builder
-                .ManifestFilters()
-                .Append<BlockListManifestFilter>();
-
-        }
+        builder
+            .ManifestFilters()
+            .Append<BlockListManifestFilter>();
 
     }
 
