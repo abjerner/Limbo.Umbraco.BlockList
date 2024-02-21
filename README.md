@@ -15,15 +15,15 @@ This package extends the default block list property editor in Umbraco, making i
   <tr>
     <td><strong>Umbraco:</strong></td>
     <td>
-      Umbraco 10, 11 and 12
-      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">Umbraco 9</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">Umbraco 8</a>)</sup></sub>
+      Umbraco 13
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">Umbraco 10-12</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">Umbraco 9</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">Umbraco 8</a>)</sup></sub>
     </td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
     <td>
-      .NET 6
-      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">.NET 5</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">.NET 4.7.2</a>)</sup></sub>
+      .NET 8
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">.NET 6</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">.NET 5</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">.NET 4.7.2</a>)</sup></sub>
     </td>
   </tr>
 </table>
@@ -46,16 +46,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10-12 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.6). To install the package, you can use either .NET CLI:
+The Umbraco 10-12 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/13.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.6
+dotnet add package Limbo.Umbraco.BlockList --version 13.0.0
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.6
+Install-Package Limbo.Umbraco.BlockList -Version 13.0.0
 ```
 
 **Umbraco 9**  
