@@ -1,6 +1,9 @@
 # Limbo Block List
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList) [![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.blocklist)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v3/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
+[![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
+[![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.blocklist)
 
 This package extends the default block list property editor in Umbraco, making it possible to control the CLR type returned by our version of the block list property editor.
 
@@ -43,16 +46,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10+ version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.5). To install the package, you can use either .NET CLI:
+The Umbraco 10-12 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.6). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.5
+dotnet add package Limbo.Umbraco.BlockList --version 3.0.6
 ```
 
-or the older NuGet Package Manager:
+or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.5
+Install-Package Limbo.Umbraco.BlockList -Version 3.0.6
 ```
 
 **Umbraco 9**  
