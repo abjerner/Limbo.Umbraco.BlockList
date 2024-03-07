@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.BlockList.PropertyEditors;
@@ -23,6 +24,7 @@ public class LimboBlockListConfiguration : BlockListConfiguration {
     /// <summary>
     /// Gets whether the block list editor is configured as a single picker (if max blocks is set to <c>1</c>).
     /// </summary>
+    [IgnoreDataMember]
     public bool IsSinglePicker => ValidationLimit.Max == 1;
 
 }
