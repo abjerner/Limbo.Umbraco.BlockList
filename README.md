@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v3/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
+[![Limbo.Umbraco.BlockList at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.blocklist/)
 [![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.blocklist)
 
 This package extends the default block list property editor in Umbraco, making it possible to control the CLR type returned by our version of the block list property editor.
@@ -46,16 +47,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 10-12 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.6). To install the package, you can use either .NET CLI:
+The Umbraco 10-12 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/3.0.7). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 3.0.6
+dotnet add package Limbo.Umbraco.BlockList --version 3.0.7
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 3.0.6
+Install-Package Limbo.Umbraco.BlockList -Version 3.0.7
 ```
 
 **Umbraco 9**  
