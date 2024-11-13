@@ -50,13 +50,13 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 The Umbraco 13 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/13.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 13.0.0
+dotnet add package Limbo.Umbraco.BlockList --version 13.0.1
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 13.0.0
+Install-Package Limbo.Umbraco.BlockList -Version 13.0.1
 ```
 
 **Umbraco 10-12**  
