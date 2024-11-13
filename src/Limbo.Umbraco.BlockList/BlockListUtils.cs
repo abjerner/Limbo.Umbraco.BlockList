@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Skybrud.Essentials.Common;
 using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.BlockList;
@@ -13,7 +14,8 @@ internal class BlockListUtils {
         return value?.Split(_separator, StringSplitOptions.None)[0];
     }
 
-    public static string? GetTypeAlias(Type type) {
+    public static string GetTypeAlias(Type type) {
+        if (type.AssemblyQualifiedName is null) throw new PropertyNotSetException(nameof(type.AssemblyQualifiedName));
         return RemoveVersion(type.AssemblyQualifiedName);
     }
 

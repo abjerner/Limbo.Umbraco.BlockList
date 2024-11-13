@@ -34,7 +34,7 @@ public class LimboBlockListPropertyValueConverter : BlockListPropertyValueConver
 
     private bool TryGetConverter(LimboBlockListConfiguration config, [NotNullWhen(true)] out IBlockListTypeConverter? converter) {
         converter = null;
-        return !string.IsNullOrWhiteSpace(config.TypeConverter) && _converterCollection.TryGet(config.TypeConverter, out converter);
+        return !string.IsNullOrWhiteSpace(config.TypeConverter?.Type) && _converterCollection.TryGet(config.TypeConverter.Type, out converter);
     }
 
     /// <inheritdoc />
