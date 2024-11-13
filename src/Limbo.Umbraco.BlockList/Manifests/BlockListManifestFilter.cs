@@ -16,12 +16,12 @@ public class BlockListManifestFilter : IManifestFilter {
             PackageName = BlockListPackage.Name,
             Version = BlockListPackage.InformationalVersion,
             BundleOptions = BundleOptions.Independent,
-            Scripts = new[] {
+            Scripts = [
                 $"/App_Plugins/{BlockListPackage.Alias}/CacheLevel.js",
                 $"/App_Plugins/{BlockListPackage.Alias}/TypeConverter.js",
                 $"/App_Plugins/{BlockListPackage.Alias}/TypeConverterOverlay.js"
-            },
-            Stylesheets = new[] { $"/App_Plugins/{BlockListPackage.Alias}/Styles.css" }
+            ],
+            Stylesheets = [$"/App_Plugins/{BlockListPackage.Alias}/Styles.css"]
         };
 
         // Append the manifest

@@ -6,9 +6,9 @@ namespace Limbo.Umbraco.BlockList;
 
 internal class BlockListUtils {
 
-    private static readonly string[] _separator = { ", Version" };
+    private static readonly string[] _separator = [", Version"];
 
-    [return: NotNullIfNotNull("value")]
+    [return: NotNullIfNotNull(nameof(value))]
     public static string? RemoveVersion(string? value) {
         return value?.Split(_separator, StringSplitOptions.None)[0];
     }

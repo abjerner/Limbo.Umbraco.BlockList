@@ -8,7 +8,7 @@ internal class LimboBlockListConfigurationEditor : ConfigurationEditor<LimboBloc
 
     public LimboBlockListConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
 
-        foreach (var field in Fields) {
+        foreach (ConfigurationField field in Fields) {
 
             if (field.View is not null) field.View = field.View.Replace("{version}", BlockListPackage.InformationalVersion);
 

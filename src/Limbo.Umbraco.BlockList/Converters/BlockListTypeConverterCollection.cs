@@ -18,9 +18,7 @@ public sealed class BlockListTypeConverterCollection : BuilderCollectionBase<IBl
         _lookup = new Dictionary<string, IBlockListTypeConverter>(StringComparer.OrdinalIgnoreCase);
         foreach (IBlockListTypeConverter item in this) {
             string? typeAlias = item.Alias;
-            if (typeAlias != null && _lookup.ContainsKey(typeAlias) == false) {
-                _lookup.Add(typeAlias, item);
-            }
+            if (typeAlias != null) _lookup.TryAdd(typeAlias, item);
         }
     }
 
