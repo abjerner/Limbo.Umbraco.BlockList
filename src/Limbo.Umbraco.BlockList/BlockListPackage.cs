@@ -49,11 +49,11 @@ public static class BlockListPackage {
     /// <summary>
     /// Gets the website URL of the package.
     /// </summary>
-    public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v3/";
+    public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v13/";
 
     /// <summary>
     /// Gets the URL of the documentation for this package.
     /// </summary>
-    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v3/docs/";
+    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v13/docs/";
 
 }
