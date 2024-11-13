@@ -59,6 +59,9 @@ or the NuGet Package Manager:
 Install-Package Limbo.Umbraco.BlockList -Version 13.0.0
 ```
 
+**Umbraco 10-12**  
+For the Umbraco 10 version of this package, see the [**v3/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main) branch instead.
+
 **Umbraco 9**  
 For the Umbraco 9 version of this package, see the [**v2/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main) branch instead.
 
