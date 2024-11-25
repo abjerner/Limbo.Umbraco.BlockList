@@ -59,7 +59,7 @@
             $scope.model.value = "";
         }
 
-        $scope.model.value.type = $scope.model.value.type.split(", Version=")[0];
+        if ($scope.model.value.type) $scope.model.value.type = $scope.model.value.type.split(", Version=")[0];
 
         $http.get(`${baseUrl}/backoffice/Limbo/BlockList/GetTypeConverters`).then(function (response) {
 
