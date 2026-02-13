@@ -18,6 +18,13 @@ public sealed class BlockListComposer : IComposer {
             .WithCollectionBuilder<BlockListTypeConverterCollectionBuilder>()
             .Add(() => builder.TypeLoader.GetTypes<IBlockListTypeConverter>());
 
+        // Register misc notification handlers to let Umbraco do its thing when saving, copying or scaffolding content
+        // with Limbo Block List properties. For one, this ensures that blocks are given new GUID keys when copying content
+        builder
+            .AddNotificationHandler<ContentSavingNotification, LimboBlockListPropertyNotificationHandler>()
+            .AddNotificationHandler<ContentCopyingNotification, LimboBlockListPropertyNotificationHandler>()
+            .AddNotificationHandler<ContentScaffoldedNotification, LimboBlockListPropertyNotificationHandler>();
+
         builder
             .ManifestFilters()
             .Append<BlockListManifestFilter>();
