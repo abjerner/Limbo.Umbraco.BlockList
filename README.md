@@ -1,6 +1,6 @@
 # Limbo Block List
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v3/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v13/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
 [![Limbo.Umbraco.BlockList at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.blocklist/)
@@ -11,7 +11,7 @@ This package extends the default block list property editor in Umbraco, making i
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v13/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
@@ -47,26 +47,25 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-The Umbraco 13 version of this package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/13.0.0). To install the package, you can use either .NET CLI:
+### Umbraco 13
+
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/13.0.3). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 13.0.1
+dotnet add package Limbo.Umbraco.BlockList --version 13.0.3
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 13.0.1
+Install-Package Limbo.Umbraco.BlockList -Version 13.0.3
 ```
 
-**Umbraco 10-12**  
-For the Umbraco 10 version of this package, see the [**v3/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main) branch instead.
+### Other versions of Umbraco
 
-**Umbraco 9**  
-For the Umbraco 9 version of this package, see the [**v2/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main) branch instead.
-
-**Umbraco 8**  
-For the Umbraco 8 version of this package, see the [**v1/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main) branch instead.
+- ~~[**v3/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main) Umbraco 10-12~~ <sub title="Umbraco 10, 11 and 12 have reached end-of-life"><sup>(EOL)</sup></sub>
+- ~~[**v2/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main) Umbraco 9~~ <sub title="Umbraco 9 have reached end-of-life"><sup>(EOL)</sup></sub>
+- ~~[**v1/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main) Umbraco 8~~ <sub title="Umbraco 8 have reached end-of-life"><sup>(EOL)</sup></sub>
 
 
 
