@@ -20,10 +20,10 @@ public class LimboBlockListPropertyValueConverter : BlockListPropertyValueConver
 
     #region Constructors
 
-    public LimboBlockListPropertyValueConverter(IProfilingLogger proflog, BlockEditorConverter blockConverter,
+    public LimboBlockListPropertyValueConverter(IProfilingLogger logger, BlockEditorConverter blockConverter,
         BlockListTypeConverterCollection converterCollection,
         IContentTypeService contentTypeService, IApiElementBuilder apiElementBuilder, BlockListPropertyValueConstructorCache constructorCache)
-        : base(proflog, blockConverter, contentTypeService, apiElementBuilder, constructorCache)
+        : base(logger, blockConverter, contentTypeService, apiElementBuilder, constructorCache)
     {
         _converterCollection = converterCollection;
     }
@@ -59,7 +59,7 @@ public class LimboBlockListPropertyValueConverter : BlockListPropertyValueConver
         // Default to "Elements" if configuration doesn't match (probably wouldn't happen)
         if (propertyType.DataType.Configuration is not LimboBlockListConfiguration config) return PropertyCacheLevel.Elements;
 
-        // Return the configured cachwe level (or "Elements" if not specified)
+        // Return the configured cache level (or "Elements" if not specified)
         return config.CacheLevel ?? PropertyCacheLevel.Elements;
 
     }
