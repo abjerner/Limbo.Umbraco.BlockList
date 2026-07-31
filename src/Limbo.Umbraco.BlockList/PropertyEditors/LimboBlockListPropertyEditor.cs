@@ -1,6 +1,8 @@
-﻿using Umbraco.Cms.Core.IO;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Cms.Core.Services;
+using Umbraco.Cms.Core.Serialization;
 
 #pragma warning disable 1591
 
@@ -9,11 +11,15 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors;
 /// <summary>
 /// Represents a block list property editor.
 /// </summary>
-[DataEditor(EditorAlias, EditorName, EditorView, ValueType = ValueTypes.Json, Group = "Limbo", Icon = EditorIcon)]
-public class LimboBlockListPropertyEditor : BlockListPropertyEditorBase {
+/// <remarks>
+/// The editor derives directly from Umbraco's own <see cref="BlockListPropertyEditor"/> rather than from
+/// <see cref="BlockListPropertyEditorBase"/>, as the variant merging logic relies on internal types and therefore
+/// can't be re-implemented outside of Umbraco.
+/// </remarks>
+[DataEditor(EditorAlias, ValueType = ValueTypes.Json, ValueEditorIsReusable = false)]
+public class LimboBlockListPropertyEditor : BlockListPropertyEditor {
 
     private readonly IIOHelper _ioHelper;
-    private readonly IEditorConfigurationParser _editorConfigurationParser;
 
     #region Constants
 
@@ -21,24 +27,25 @@ public class LimboBlockListPropertyEditor : BlockListPropertyEditorBase {
 
     public const string EditorName = "Limbo Block List";
 
-    public const string EditorView = "blocklist";
+    public const string EditorUiAlias = "Limbo.PropertyEditorUi.BlockList";
 
-    public const string EditorIcon = "icon-thumbnail-list color-limbo";
+    public const string EditorIcon = "icon-thumbnail-list";
 
     #endregion
 
     #region Constructors
 
-    public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IBlockValuePropertyIndexValueFactory blockValuePropertyIndexValueFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, blockValuePropertyIndexValueFactory) {
+    public LimboBlockListPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper,
+        IBlockValuePropertyIndexValueFactory blockValuePropertyIndexValueFactory, IJsonSerializer jsonSerializer)
+        : base(dataValueEditorFactory, ioHelper, blockValuePropertyIndexValueFactory, jsonSerializer) {
         _ioHelper = ioHelper;
-        _editorConfigurationParser = editorConfigurationParser;
     }
 
     #endregion
 
     #region Member methods
 
-    protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor(_ioHelper, _editorConfigurationParser);
+    protected override IConfigurationEditor CreateConfigurationEditor() => new LimboBlockListConfigurationEditor(_ioHelper);
 
     #endregion
 

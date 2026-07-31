@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using System;
+using System.Collections.Generic;
 using Limbo.Umbraco.BlockList.Converters;
 using Limbo.Umbraco.BlockList.Models;
 using Limbo.Umbraco.BlockList.PropertyEditors;
@@ -104,13 +107,28 @@ public static class BlockListExtensions {
     /// <param name="config">The configuration to change.</param>
     /// <param name="value">The new value.</param>
     /// <returns>The <typeparamref name="TConfig"/> instance - useful for method chaining.</returns>
+    [Obsolete("Umbraco deprecated single block mode in favor of the dedicated 'Single Block' property editor.")]
     public static TConfig SetUseSingleBlockMode<TConfig>(this TConfig config, bool value) where TConfig : LimboBlockListConfiguration {
+#pragma warning disable CS0618
         config.UseSingleBlockMode = value;
+#pragma warning restore CS0618
         return config;
     }
 
     /// <summary>
-    /// Sets the value of the <see cref="BlockListConfiguration.UseLiveEditing"/> property.
+    /// Sets the value of the <see cref="LimboBlockListConfiguration.MaxPropertyWidth"/> property.
+    /// </summary>
+    /// <typeparam name="TConfig">The type of the configuration.</typeparam>
+    /// <param name="config">The configuration to change.</param>
+    /// <param name="value">The new value - eg. <c>800px</c> or <c>100%</c>.</param>
+    /// <returns>The <typeparamref name="TConfig"/> instance - useful for method chaining.</returns>
+    public static TConfig SetMaxPropertyWidth<TConfig>(this TConfig config, string? value) where TConfig : LimboBlockListConfiguration {
+        config.MaxPropertyWidth = value;
+        return config;
+    }
+
+    /// <summary>
+    /// Sets the value of the <see cref="LimboBlockListConfiguration.UseLiveEditing"/> property.
     /// </summary>
     /// <typeparam name="TConfig">The type of the configuration.</typeparam>
     /// <param name="config">The configuration to change.</param>
@@ -122,7 +140,7 @@ public static class BlockListExtensions {
     }
 
     /// <summary>
-    /// Sets the value of the <see cref="BlockListConfiguration.UseInlineEditingAsDefault"/> property.
+    /// Sets the value of the <see cref="LimboBlockListConfiguration.UseInlineEditingAsDefault"/> property.
     /// </summary>
     /// <typeparam name="TConfig">The type of the configuration.</typeparam>
     /// <param name="config">The configuration to change.</param>

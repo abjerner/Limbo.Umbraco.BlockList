@@ -1,6 +1,6 @@
 # Limbo Block List
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v13/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v17/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.BlockList.svg)](https://www.nuget.org/packages/Limbo.Umbraco.BlockList)
 [![Limbo.Umbraco.BlockList at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.blocklist/)
@@ -11,20 +11,20 @@ This package extends the default block list property editor in Umbraco, making i
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v13/main/LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/blob/v17/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
     <td>
-      Umbraco 13
-      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">Umbraco 10-12</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">Umbraco 9</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">Umbraco 8</a>)</sup></sub>
+      Umbraco 17
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v13/main">Umbraco 13</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">Umbraco 10-12</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">Umbraco 9</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">Umbraco 8</a>)</sup></sub>
     </td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
     <td>
-      .NET 8
-      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">.NET 6</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">.NET 5</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">.NET 4.7.2</a>)</sup></sub>
+      .NET 10
+      <sub><sup>(and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v13/main">.NET 8</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main">.NET 6</a>, <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main">.NET 5</a> and <a href="https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main">.NET 4.7.2</a>)</sup></sub>
     </td>
   </tr>
 </table>
@@ -47,22 +47,23 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ## Installation
 
-### Umbraco 13
+### Umbraco 17
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/13.0.3). To install the package, you can use either .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/17.0.0-alpha000). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 13.0.3
+dotnet add package Limbo.Umbraco.BlockList --version 17.0.0-alpha000
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 13.0.3
+Install-Package Limbo.Umbraco.BlockList -Version 17.0.0-alpha000
 ```
 
 ### Other versions of Umbraco
 
+- [**v13/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v13/main) Umbraco 13
 - ~~[**v3/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v3/main) Umbraco 10-12~~ <sub title="Umbraco 10, 11 and 12 have reached end-of-life"><sup>(EOL)</sup></sub>
 - ~~[**v2/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v2/main) Umbraco 9~~ <sub title="Umbraco 9 have reached end-of-life"><sup>(EOL)</sup></sub>
 - ~~[**v1/main**](https://github.com/abjerner/Limbo.Umbraco.BlockList/tree/v1/main) Umbraco 8~~ <sub title="Umbraco 8 have reached end-of-life"><sup>(EOL)</sup></sub>
@@ -138,3 +139,14 @@ namespace UmbracoTests.BlockList {
 By creating your own class implementing the `IBlockListTypeConverter` interface, it will show up for the **Type Converter** option on the data type:
 
 ![image](https://user-images.githubusercontent.com/3634580/150651412-d623fe90-c459-4c73-9f67-75461ae448e0.png)
+
+
+<br /><br />
+
+## Upgrading from Umbraco 13
+
+The Umbraco 17 release is a rewrite of everything that touched the AngularJS backoffice. Existing data type
+configurations and custom `IBlockListTypeConverter` implementations are unaffected - converters are still identified
+by their version-less assembly qualified name, so they only need a recompile against .NET 10.
+
+See [**documentation/umbraco-17-upgrade.md**](documentation/umbraco-17-upgrade.md) for the full recap of what changed.

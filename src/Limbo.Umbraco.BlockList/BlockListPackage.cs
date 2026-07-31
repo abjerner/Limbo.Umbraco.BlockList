@@ -1,4 +1,6 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using System;
 using System.Diagnostics;
 using Umbraco.Cms.Core.Semver;
 
@@ -49,11 +51,11 @@ public static class BlockListPackage {
     /// <summary>
     /// Gets the website URL of the package.
     /// </summary>
-    public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v13/";
+    public const string WebsiteUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v17/";
 
     /// <summary>
     /// Gets the URL of the documentation for this package.
     /// </summary>
-    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v13/docs/";
+    public const string DocumentationUrl = "https://packages.limbo.works/limbo.umbraco.blocklist/v17/docs/";
 
 }

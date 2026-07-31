@@ -1,5 +1,6 @@
-﻿using Limbo.Umbraco.BlockList.Converters;
-using Limbo.Umbraco.BlockList.Manifests;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using Limbo.Umbraco.BlockList.Converters;
 using Limbo.Umbraco.BlockList.NotificationHandlers;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -14,7 +15,6 @@ public sealed class BlockListComposer : IComposer {
     public void Compose(IUmbracoBuilder builder) {
 
         builder
-            .AddNotificationHandler<SendingContentNotification, SendingContentHandler>()
             .WithCollectionBuilder<BlockListTypeConverterCollectionBuilder>()
             .Add(() => builder.TypeLoader.GetTypes<IBlockListTypeConverter>());
 
@@ -25,9 +25,13 @@ public sealed class BlockListComposer : IComposer {
             .AddNotificationHandler<ContentCopyingNotification, LimboBlockListPropertyNotificationHandler>()
             .AddNotificationHandler<ContentScaffoldedNotification, LimboBlockListPropertyNotificationHandler>();
 
-        builder
-            .ManifestFilters()
-            .Append<BlockListManifestFilter>();
+        // Umbraco 14 removed "IManifestFilter" along with the AngularJS backoffice. The client side part of the
+        // package is now declared in "wwwroot/umbraco-package.json", which Umbraco discovers on its own via the
+        // static web assets of this project (App_Plugins/Limbo.Umbraco.BlockList).
+
+        // The former "SendingContentHandler" is gone as well. It only existed to rewrite our editor alias to
+        // "Umbraco.BlockList" so the AngularJS block list component would render. The new backoffice resolves the
+        // editing experience through the property editor UI alias instead, so no rewriting is needed.
 
     }
 

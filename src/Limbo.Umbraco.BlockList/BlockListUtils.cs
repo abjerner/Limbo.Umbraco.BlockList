@@ -1,7 +1,8 @@
-﻿using System;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Common;
-using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.BlockList;
 
@@ -19,9 +20,7 @@ internal class BlockListUtils {
         return RemoveVersion(type.AssemblyQualifiedName);
     }
 
-    public static void AppendLinkToDescription(ConfigurationField field, string text, string url) {
-        string a = $"<a href=\"{url}\" class=\"btn btn-primary btn-xs limbo-block-list-button\" target=\"_blank\" rel=\"noreferrer noopener\">{text}</a>";
-        field.Description = $"{field.Description}\r\n{a}";
-    }
+    // "AppendLinkToDescription" was removed as part of the Umbraco 17 upgrade. As of Umbraco 14, "ConfigurationField"
+    // no longer carries a description - labels and descriptions are declared client side in "umbraco-package.json".
 
 }

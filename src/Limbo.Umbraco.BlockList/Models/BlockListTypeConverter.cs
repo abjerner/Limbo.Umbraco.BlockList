@@ -1,14 +1,16 @@
-﻿using System.Diagnostics.CodeAnalysis;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Limbo.Umbraco.BlockList.Converters;
-using Limbo.Umbraco.BlockList.Json.Newtonsoft;
-using Newtonsoft.Json;
+using Limbo.Umbraco.BlockList.Json;
 
 namespace Limbo.Umbraco.BlockList.Models;
 
 /// <summary>
 /// Class describing a selected converter.
 /// </summary>
-[JsonConverter(typeof(BlockListJsonConverter))]
+[JsonConverter(typeof(BlockListTypeConverterJsonConverter))]
 public class BlockListTypeConverter {
 
     /// <summary>
