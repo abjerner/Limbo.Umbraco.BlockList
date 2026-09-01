@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Limbo.Umbraco.BlockList.Constants;
 using Limbo.Umbraco.BlockList.Manifests.Conditions;
 using Limbo.Umbraco.BlockList.Manifests.Extensions;
+using Limbo.Umbraco.BlockList.PropertyEditors;
 using Skybrud.Essentials.Security.Extensions;
+using Skybrud.Essentials.Umbraco.Constants;
 using Skybrud.Essentials.Umbraco.Manifests.Extensions;
 using Skybrud.Essentials.Umbraco.Manifests.Extensions.PropertyEditors;
 using Umbraco.Cms.Core.Manifest;
@@ -40,36 +43,36 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
     private static IEnumerable<IExtension> GetExtensions() {
 
         yield return new PropertyEditorSchemaExtension {
-            Alias = "Limbo.Umbraco.BlockList",
-            Name = "Limbo Block List",
+            Alias = LimboBlockListPropertyEditor.EditorAlias,
+            Name = LimboBlockListPropertyEditor.EditorName,
             Meta = new PropertyEditorSchemaMeta {
-                DefaultPropertyEditorUiAlias = "Limbo.PropertyEditorUi.BlockList",
+                DefaultPropertyEditorUiAlias = LimboBlockListPropertyEditor.EditorUiAlias,
                 Settings = new PropertyEditorSettings {
                     Properties = [
                         new PropertyEditorSettingsProperty {
                             Alias = "blocks",
                             Label = "",
                             Description = "Define the available blocks.",
-                            PropertyEditorUiAlias = "Umb.PropertyEditorUi.BlockListTypeConfiguration"
+                            PropertyEditorUiAlias = UmbPropertyEditorUiAliases.BlockListTypeConfiguration
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "validationLimit",
                             Label = "Amount",
                             Description = "Set a required range of blocks",
-                            PropertyEditorUiAlias = "Umb.PropertyEditorUi.NumberRange",
+                            PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.NumberRange,
                             Config = new object[] { new { alias = "validationRange", value = new { min = 0 } } }
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "typeConverter",
                             Label = "Type Converter",
                             Description = "Select the type converter used for converting the block list value into a custom CLR type.",
-                            PropertyEditorUiAlias = "Limbo.PropertyEditorUi.BlockList.TypeConverter"
+                            PropertyEditorUiAlias = BlockListPropertyEditorUiAliases.TypeConverter
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "cacheLevel",
                             Label = "Cache Level",
                             Description = "Select the cache level of the underlying property value converter.",
-                            PropertyEditorUiAlias = "Limbo.PropertyEditorUi.BlockList.CacheLevel"
+                            PropertyEditorUiAlias = BlockListPropertyEditorUiAliases.CacheLevel
                         }
                     ]
                 }
@@ -77,14 +80,14 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
         };
 
         yield return new PropertyEditorUiExtension {
-            Alias = "Limbo.PropertyEditorUi.BlockList",
-            Name = "Limbo Block List Property Editor UI",
-            Element = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-block-list.element.js",
+            Alias = BlockListPropertyEditorUiAliases.BlockList,
+            Name = $"{Name}: Block List Property Editor UI",
+            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-block-list.element.js",
             Meta = new PropertyEditorUiMeta {
                 Label = "Limbo Block List",
-                PropertyEditorSchemaAlias = "Limbo.Umbraco.BlockList",
+                PropertyEditorSchemaAlias = LimboBlockListPropertyEditor.EditorAlias,
                 Icon = "icon-thumbnail-list",
-                Group = "richContent",
+                Group = "Limbo",
                 SupportsReadOnly = true,
                 Settings = new PropertyEditorSettings {
                     Properties = [
@@ -92,19 +95,19 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                             Alias = "useLiveEditing",
                             Label = "Live editing mode",
                             Description = "Live editing in editor overlays for live updated custom views or labels using custom expression.",
-                            PropertyEditorUiAlias = "Umb.PropertyEditorUi.Toggle"
+                            PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.Toggle
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "useInlineEditingAsDefault",
                             Label = "Inline editing mode",
                             Description = "Use the inline editor as the default block view.",
-                            PropertyEditorUiAlias = "Umb.PropertyEditorUi.Toggle"
+                            PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.Toggle
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "maxPropertyWidth",
                             Label = "Property editor width",
                             Description = "Optional CSS override, example: 800px or 100%",
-                            PropertyEditorUiAlias = "Umb.PropertyEditorUi.TextBox"
+                            PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.TextBox
                         }
                     ]
                 }
@@ -112,9 +115,9 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
         };
 
         yield return new PropertyEditorUiExtension {
-            Alias = "Limbo.PropertyEditorUi.BlockList.TypeConverter",
-            Name = "Limbo Block List Type Converter Property Editor UI",
-            Element = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-type-converter.element.js",
+            Alias = BlockListPropertyEditorUiAliases.TypeConverter,
+            Name = $"{Name}: Type Converter Property Editor UI",
+            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-type-converter.element.js",
             Meta = new PropertyEditorUiMeta {
                 Label = "Limbo Block List Type Converter",
                 Icon = "icon-autofill",
@@ -124,9 +127,9 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
         };
 
         yield return new PropertyEditorUiExtension {
-            Alias = "Limbo.PropertyEditorUi.BlockList.CacheLevel",
-            Name = "Limbo Block List Cache Level Property Editor UI",
-            Element = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-cache-level.element.js",
+            Alias = BlockListPropertyEditorUiAliases.CacheLevel,
+            Name = $"{Name}: Cache Level Property Editor UI",
+            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-cache-level.element.js",
             Meta = new PropertyEditorUiMeta {
                 Label = "Limbo Block List Cache Level",
                 Icon = "icon-box",
@@ -136,85 +139,85 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
         };
 
         yield return new PropertyValueResolverExtension {
-            Alias = "Limbo.PropertyValueResolver.BlockList",
-            Name = "Limbo Block List Value Resolver",
-            Api = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-value-resolver.js",
-            ForEditorAlias = "Limbo.Umbraco.BlockList"
+            Alias = $"{Alias}.PropertyValueResolver",
+            Name = $"{Name}: Value Resolver",
+            Api = $"/App_Plugins/{Alias}/js/property-value-resolver.js",
+            ForEditorAlias = LimboBlockListPropertyEditor.EditorAlias
         };
 
         yield return new PropertyValueClonerExtension {
-            Alias = "Limbo.PropertyValueCloner.BlockList",
-            Name = "Limbo Block List Value Cloner",
-            Api = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-value-cloner.js",
-            ForEditorAlias = "Limbo.Umbraco.BlockList"
+            Alias = $"{Alias}.PropertyValueCloner",
+            Name = $"{Name}: Value Cloner",
+            Api = $"/App_Plugins/{Alias}/js/property-value-cloner.js",
+            ForEditorAlias = LimboBlockListPropertyEditor.EditorAlias
         };
 
         yield return new PropertyValidationPathTranslator {
-            Alias = "Limbo.PropertyValidationPathTranslator.BlockList",
-            Name = "Limbo Block List Property Validation Path Translator",
-            Api = "/App_Plugins/Limbo.Umbraco.BlockList/js/property-validation-path-translator.js",
-            ForEditorAlias = "Limbo.Umbraco.BlockList"
+            Alias = $"{Alias}.PropertyValidationPathTranslator",
+            Name = $"{Name}: Property Validation Path Translator",
+            Api = $"/App_Plugins/{Alias}/js/property-validation-path-translator.js",
+            ForEditorAlias = LimboBlockListPropertyEditor.EditorAlias
         };
 
         yield return new PropertyContext {
             Kind = "sortMode",
-            Alias = "Limbo.PropertyContext.BlockList.SortMode",
-            Name = "Limbo Block List Sort Mode Property Context",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"]
+            Alias = $"{Alias}.PropertyContext.SortMode",
+            Name = $"{Name}: Sort Mode Property Context",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias]
         };
 
         yield return new PropertyAction {
             Kind = "sortMode",
-            Alias = "Limbo.PropertyAction.BlockList.SortMode",
-            Name = "Limbo Block List Sort Mode Property Action",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"],
+            Alias = $"{Alias}.PropertyAction.SortMode",
+            Name = $"{Name}: Sort Mode Property Action",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias],
             Conditions = [new PropertyHasValueCondition()]
         };
 
         yield return new PropertyContext {
             Kind = "clipboard",
-            Alias = "Limbo.PropertyContext.BlockList.Clipboard",
-            Name = "Limbo Block List Clipboard Property Context",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"]
+            Alias = $"{Alias}.PropertyContext.Clipboard",
+            Name = $"{Name}: Clipboard Property Context",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias]
         };
 
         yield return new PropertyAction {
             Kind = "copyToClipboard",
-            Alias = "Limbo.PropertyAction.BlockList.Clipboard.Copy",
-            Name = "Limbo Block List Copy To Clipboard Property Action",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"],
+            Alias = $"{Alias}.PropertyAction.Clipboard.Copy",
+            Name = $"{Name}: Copy To Clipboard Property Action",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias],
             Conditions = [new PropertyHasValueCondition()]
         };
 
         yield return new PropertyAction {
             Kind = "pasteFromClipboard",
-            Alias = "Limbo.PropertyAction.BlockList.Clipboard.Paste",
-            Name = "Limbo Block List Paste From Clipboard Property Action",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"],
+            Alias = $"{Alias}.PropertyAction.Clipboard.Paste",
+            Name = $"{Name}: Paste From Clipboard Property Action",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias],
             Conditions = [new PropertyWritableCondition()]
         };
 
         yield return new ClipboardCopyPropertyValueTranslator {
-            Alias = "Limbo.ClipboardCopyPropertyValueTranslator.BlockListToBlock",
-            Name = "Limbo Block List To Block Clipboard Copy Property Value Translator",
-            Api = "/App_Plugins/Limbo.Umbraco.BlockList/js/clipboard-copy-translator.js",
-            FromPropertyEditorUi = "Limbo.PropertyEditorUi.BlockList",
+            Alias = $"{Alias}.ClipboardCopyPropertyValueTranslator.BlockListToBlock",
+            Name = $"{Name}: Clipboard Copy Property Value Translator",
+            Api = $"/App_Plugins/{Alias}/js/clipboard-copy-translator.js",
+            FromPropertyEditorUi = LimboBlockListPropertyEditor.EditorUiAlias,
             ToClipboardEntryValueType = "block"
         };
 
         yield return new ClipboardPastePropertyValueTranslator {
-            Alias = "Limbo.ClipboardPastePropertyValueTranslator.BlockToBlockList",
-            Name = "Limbo Block To Block List Clipboard Paste Property Value Translator",
-            Api = "/App_Plugins/Limbo.Umbraco.BlockList/js/clipboard-paste-translator.js",
+            Alias = $"{Alias}.ClipboardPastePropertyValueTranslator.BlockToBlockList",
+            Name = $"{Name}: Clipboard Paste Property Value Translator",
+            Api = $"/App_Plugins/{Alias}/js/clipboard-paste-translator.js",
             FromClipboardEntryValueType = "block",
-            ToPropertyEditorUi = "Limbo.PropertyEditorUi.BlockList"
+            ToPropertyEditorUi = LimboBlockListPropertyEditor.EditorUiAlias
         };
 
         yield return new PropertyAction {
             Kind = "clear",
-            Alias = "Limbo.PropertyAction.BlockList.Clear",
-            Name = "Limbo Block List Clear Property Action",
-            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"]
+            Alias = $"{Alias}.PropertyAction.Clear",
+            Name = $"{Name}: Clear Property Action",
+            ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias]
         };
 
     }

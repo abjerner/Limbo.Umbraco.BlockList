@@ -27,7 +27,7 @@ public class LimboBlockListPropertyEditor : BlockListPropertyEditor {
 
     public const string EditorName = "Limbo Block List";
 
-    public const string EditorUiAlias = "Limbo.PropertyEditorUi.BlockList";
+    public const string EditorUiAlias = $"{EditorAlias}.PropertyEditorUi";
 
     public const string EditorIcon = "icon-thumbnail-list";
 
