@@ -51,7 +51,7 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                     Properties = [
                         new PropertyEditorSettingsProperty {
                             Alias = "blocks",
-                            Label = "",
+                            Label = "Available Blocks",
                             Description = "Define the available blocks.",
                             PropertyEditorUiAlias = UmbPropertyEditorUiAliases.BlockListTypeConfiguration
                         },
@@ -78,6 +78,8 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                 }
             }
         };
+
+
 
         yield return new PropertyEditorUiExtension {
             Alias = BlockListPropertyEditorUiAliases.BlockList,
@@ -108,6 +110,17 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                             Label = "Property editor width",
                             Description = "Optional CSS override, example: 800px or 100%",
                             PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.TextBox
+                        },
+                        new PropertyEditorSettingsProperty {
+                            Alias = "createModalSize",
+                            Label = "#blockEditor_labelCreateModalSize",
+                            PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.OverlaySize,
+                            Config = new[] {
+                                new PropertyEditorConfigProperty {
+                                    Alias = "defaultOptionLabel",
+                                    Value = "Auto"
+                                }
+                            }
                         }
                     ]
                 }
