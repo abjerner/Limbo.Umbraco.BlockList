@@ -210,6 +210,13 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             ToPropertyEditorUi = "Limbo.PropertyEditorUi.BlockList"
         };
 
+        yield return new PropertyAction {
+            Kind = "clear",
+            Alias = "Limbo.PropertyAction.BlockList.Clear",
+            Name = "Limbo Block List Clear Property Action",
+            ForPropertyEditorUis = ["Limbo.PropertyEditorUi.BlockList"]
+        };
+
     }
 
 }
