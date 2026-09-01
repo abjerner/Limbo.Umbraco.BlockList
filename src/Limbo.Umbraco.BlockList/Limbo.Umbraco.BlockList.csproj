@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md -->
-
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <StaticWebAssetBasePath>App_Plugins/$(AssemblyName)</StaticWebAssetBasePath>
     <Nullable>enable</Nullable>
-    <!--
-      The Umbraco package references below are floored at 17.0.0, so restore resolves that exact version and reports
-      advisories for its transitive dependencies. Consuming sites reference a newer Umbraco 17 patch where these are
-      fixed, so the advisories are suppressed here as they were on the v13 branch.
-    -->
     <NoWarn>$(NoWarn);NU1902;NU1903</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>17.0.0</VersionPrefix>
-    <VersionSuffix>alpha000</VersionSuffix>
-    <VersionSuffix Condition="'$(Configuration)'=='Debug'">alpha000-build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
+    <VersionPrefix>17.0.0-alpha000</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Title>Limbo Block List</Title>
+    <Product>Limbo Block List</Product>
     <Description>Extended block list editor for Umbraco 17.</Description>
   </PropertyGroup>
 
@@ -39,8 +32,14 @@
     <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.BlockList</RepositoryUrl>
   </PropertyGroup>
 
+  <!-- Ignore vulnerabilities from transient dependencies -->
+  <PropertyGroup>
+    <NuGetAuditMode>direct</NuGetAuditMode>
+  </PropertyGroup>
+
   <!-- Include additional metadata in the assembly -->
   <ItemGroup>
+    <AssemblyMetadata Include="Authors" Value="$(Authors)" />
     <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/limbo.umbraco.blocklist/" />
     <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.blocklist/docs/v17/" />
     <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Limbo.Umbraco.BlockList" />
@@ -50,9 +49,9 @@
   <!-- Include NuGet dependencies -->
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials" Version="1.1.68" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,17.9.9)" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,17.9.9)" />
-    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,17.9.9)" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,17.999)" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,17.999)" />
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,17.999)" />
   </ItemGroup>
 
   <!-- Include package icon and README for the NuGet -->

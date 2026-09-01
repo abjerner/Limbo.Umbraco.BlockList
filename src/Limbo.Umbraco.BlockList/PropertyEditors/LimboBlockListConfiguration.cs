@@ -43,7 +43,7 @@ public class LimboBlockListConfiguration : BlockListConfiguration {
     public bool UseInlineEditingAsDefault { get; set; }
 
     /// <summary>
-    /// Gets or sets an optional CSS width override for the property editor - eg. <c>800px</c> or <c>100%</c>.
+    /// Gets or sets an optional CSS width override for the property editor - e.g. <c>800px</c> or <c>100%</c>.
     /// </summary>
     /// <remarks>Client side only - Umbraco removed this from its own configuration class in Umbraco 14.</remarks>
     [ConfigurationField("maxPropertyWidth")]

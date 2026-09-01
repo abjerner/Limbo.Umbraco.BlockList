@@ -120,7 +120,7 @@ public static class BlockListExtensions {
     /// </summary>
     /// <typeparam name="TConfig">The type of the configuration.</typeparam>
     /// <param name="config">The configuration to change.</param>
-    /// <param name="value">The new value - eg. <c>800px</c> or <c>100%</c>.</param>
+    /// <param name="value">The new value - e.g. <c>800px</c> or <c>100%</c>.</param>
     /// <returns>The <typeparamref name="TConfig"/> instance - useful for method chaining.</returns>
     public static TConfig SetMaxPropertyWidth<TConfig>(this TConfig config, string? value) where TConfig : LimboBlockListConfiguration {
         config.MaxPropertyWidth = value;
