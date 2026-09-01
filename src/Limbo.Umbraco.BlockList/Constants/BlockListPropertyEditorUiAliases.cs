@@ -5,7 +5,7 @@ namespace Limbo.Umbraco.BlockList.Constants;
 /// <summary>
 /// Static class with constants for the property editor UI aliases of this package.
 /// </summary>
-public class BlockListPropertyEditorUiAliases {
+public static class BlockListPropertyEditorUiAliases {
 
     /// <summary>
     /// The alias of the main block list property editor UI.

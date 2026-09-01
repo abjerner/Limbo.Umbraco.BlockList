@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Limbo.Umbraco.BlockList.Constants;
-using Limbo.Umbraco.BlockList.Manifests.Conditions;
-using Limbo.Umbraco.BlockList.Manifests.Extensions;
 using Limbo.Umbraco.BlockList.PropertyEditors;
 using Skybrud.Essentials.Security.Extensions;
 using Skybrud.Essentials.Umbraco.Constants;
+using Skybrud.Essentials.Umbraco.Manifests.Conditions.Properties;
 using Skybrud.Essentials.Umbraco.Manifests.Extensions;
+using Skybrud.Essentials.Umbraco.Manifests.Extensions.Clipboard;
+using Skybrud.Essentials.Umbraco.Manifests.Extensions.Properties;
 using Skybrud.Essentials.Umbraco.Manifests.Extensions.PropertyEditors;
 using Umbraco.Cms.Core.Manifest;
 using Umbraco.Cms.Infrastructure.Manifest;
@@ -60,7 +61,12 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                             Label = "Amount",
                             Description = "Set a required range of blocks",
                             PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.NumberRange,
-                            Config = new object[] { new { alias = "validationRange", value = new { min = 0 } } }
+                            Config = [
+                                new PropertyEditorConfigProperty {
+                                    Alias = "validationRange",
+                                    Value = new { min = 0 }
+                                }
+                            ]
                         },
                         new PropertyEditorSettingsProperty {
                             Alias = "typeConverter",
@@ -88,8 +94,8 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             Meta = new PropertyEditorUiMeta {
                 Label = "Limbo Block List",
                 PropertyEditorSchemaAlias = LimboBlockListPropertyEditor.EditorAlias,
-                Icon = "icon-thumbnail-list",
-                Group = "Limbo",
+                Icon = LimboBlockListPropertyEditor.EditorIcon,
+                Group = LimboBlockListPropertyEditor.EditorGroup,
                 SupportsReadOnly = true,
                 Settings = new PropertyEditorSettings {
                     Properties = [
@@ -115,12 +121,12 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
                             Alias = "createModalSize",
                             Label = "#blockEditor_labelCreateModalSize",
                             PropertyEditorUiAlias = UmbracoPropertyEditorUiAliases.OverlaySize,
-                            Config = new[] {
+                            Config = [
                                 new PropertyEditorConfigProperty {
                                     Alias = "defaultOptionLabel",
                                     Value = "Auto"
                                 }
-                            }
+                            ]
                         }
                     ]
                 }
@@ -165,21 +171,21 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             ForEditorAlias = LimboBlockListPropertyEditor.EditorAlias
         };
 
-        yield return new PropertyValidationPathTranslator {
+        yield return new PropertyValidationPathTranslatorExtension {
             Alias = $"{Alias}.PropertyValidationPathTranslator",
             Name = $"{Name}: Property Validation Path Translator",
             Api = $"/App_Plugins/{Alias}/js/property-validation-path-translator.js",
             ForEditorAlias = LimboBlockListPropertyEditor.EditorAlias
         };
 
-        yield return new PropertyContext {
+        yield return new PropertyContextExtension {
             Kind = "sortMode",
             Alias = $"{Alias}.PropertyContext.SortMode",
             Name = $"{Name}: Sort Mode Property Context",
             ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias]
         };
 
-        yield return new PropertyAction {
+        yield return new PropertyActionExtension {
             Kind = "sortMode",
             Alias = $"{Alias}.PropertyAction.SortMode",
             Name = $"{Name}: Sort Mode Property Action",
@@ -187,14 +193,14 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             Conditions = [new PropertyHasValueCondition()]
         };
 
-        yield return new PropertyContext {
+        yield return new PropertyContextExtension {
             Kind = "clipboard",
             Alias = $"{Alias}.PropertyContext.Clipboard",
             Name = $"{Name}: Clipboard Property Context",
             ForPropertyEditorUis = [LimboBlockListPropertyEditor.EditorUiAlias]
         };
 
-        yield return new PropertyAction {
+        yield return new PropertyActionExtension {
             Kind = "copyToClipboard",
             Alias = $"{Alias}.PropertyAction.Clipboard.Copy",
             Name = $"{Name}: Copy To Clipboard Property Action",
@@ -202,7 +208,7 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             Conditions = [new PropertyHasValueCondition()]
         };
 
-        yield return new PropertyAction {
+        yield return new PropertyActionExtension {
             Kind = "pasteFromClipboard",
             Alias = $"{Alias}.PropertyAction.Clipboard.Paste",
             Name = $"{Name}: Paste From Clipboard Property Action",
@@ -210,7 +216,7 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             Conditions = [new PropertyWritableCondition()]
         };
 
-        yield return new ClipboardCopyPropertyValueTranslator {
+        yield return new ClipboardCopyPropertyValueTranslatorExtension {
             Alias = $"{Alias}.ClipboardCopyPropertyValueTranslator.BlockListToBlock",
             Name = $"{Name}: Clipboard Copy Property Value Translator",
             Api = $"/App_Plugins/{Alias}/js/clipboard-copy-translator.js",
@@ -226,7 +232,7 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             ToPropertyEditorUi = LimboBlockListPropertyEditor.EditorUiAlias
         };
 
-        yield return new PropertyAction {
+        yield return new PropertyActionExtension {
             Kind = "clear",
             Alias = $"{Alias}.PropertyAction.Clear",
             Name = $"{Name}: Clear Property Action",
