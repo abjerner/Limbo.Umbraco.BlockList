@@ -1,27 +1,16 @@
-﻿using Umbraco.Cms.Core.IO;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Cms.Core.Services;
 
 namespace Limbo.Umbraco.BlockList.PropertyEditors;
 
-internal class LimboBlockListConfigurationEditor : ConfigurationEditor<LimboBlockListConfiguration> {
+/// <remarks>
+/// As of Umbraco 14, a configuration field no longer carries a name, description or view - the editing experience for
+/// each field is declared client side instead. See <c>wwwroot/umbraco-package.json</c>.
+/// </remarks>
+internal sealed class LimboBlockListConfigurationEditor : ConfigurationEditor<LimboBlockListConfiguration> {
 
-    public LimboBlockListConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
-
-        foreach (ConfigurationField field in Fields) {
-
-            if (field.View is not null) field.View = field.View.Replace("{version}", BlockListPackage.InformationalVersion);
-
-            switch (field.Key) {
-
-                case "typeConverter":
-                    BlockListUtils.AppendLinkToDescription(field, "See the documentation &rarr;", "https://packages.limbo.works/6b6ffcbf");
-                    break;
-
-            }
-
-        }
-
-    }
+    public LimboBlockListConfigurationEditor(IIOHelper ioHelper) : base(ioHelper) { }
 
 }

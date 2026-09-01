@@ -1,29 +1,53 @@
-﻿using System;
+// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
+
+using System;
+using System.Text.Json.Serialization;
 using Limbo.Umbraco.BlockList.Converters;
-using Newtonsoft.Json;
 
 namespace Limbo.Umbraco.BlockList.Models.Api;
 
-internal class BlockListTypeConverterApiModel {
+/// <summary>
+/// API model describing an <see cref="IBlockListTypeConverter"/> as returned by the Management API.
+/// </summary>
+public class BlockListTypeConverterApiModel {
 
     private readonly IBlockListTypeConverter _converter;
     private readonly Type _type;
 
-    [JsonProperty("assembly")]
+    /// <summary>
+    /// Gets the full name of the assembly declaring the type converter.
+    /// </summary>
+    [JsonPropertyName("assembly")]
     public string Assembly => _type.Assembly.FullName ?? string.Empty;
 
-    [JsonProperty("type")]
+    /// <summary>
+    /// Gets the alias (version-less assembly qualified name) of the type converter.
+    /// </summary>
+    [JsonPropertyName("type")]
     public string Type => BlockListUtils.GetTypeAlias(_type);
 
-    [JsonProperty("icon")]
-    public string Icon => _converter.Icon ?? $"icon-box color-{_type.Assembly.FullName?.Split('.')[0].ToLower()}";
+    /// <summary>
+    /// Gets the icon of the type converter.
+    /// </summary>
+    [JsonPropertyName("icon")]
+    public string Icon => _converter.Icon ?? "icon-box";
 
-    [JsonProperty("name")]
+    /// <summary>
+    /// Gets the friendly name of the type converter.
+    /// </summary>
+    [JsonPropertyName("name")]
     public string Name => _converter.Name;
 
-    [JsonProperty("description")]
-    public string Description => $"{BlockListUtils.RemoveVersion(_type.AssemblyQualifiedName)}.dll";
+    /// <summary>
+    /// Gets a description of the type converter.
+    /// </summary>
+    [JsonPropertyName("description")]
+    public string Description => BlockListUtils.GetTypeAlias(_type);
 
+    /// <summary>
+    /// Initializes a new instance based on the specified <paramref name="converter"/>.
+    /// </summary>
+    /// <param name="converter">The type converter.</param>
     public BlockListTypeConverterApiModel(IBlockListTypeConverter converter) {
         _converter = converter;
         _type = converter.GetType();

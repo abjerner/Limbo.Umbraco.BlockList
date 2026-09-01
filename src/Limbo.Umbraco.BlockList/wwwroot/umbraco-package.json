@@ -1,0 +1,185 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "name": "Limbo Block List",
+  "id": "Limbo.Umbraco.BlockList",
+  "version": "17.0.0-alpha000",
+  "allowTelemetry": true,
+  "extensions": [
+    {
+      "type": "propertyEditorSchema",
+      "alias": "Limbo.Umbraco.BlockList",
+      "name": "Limbo Block List",
+      "meta": {
+        "defaultPropertyEditorUiAlias": "Limbo.PropertyEditorUi.BlockList",
+        "settings": {
+          "properties": [
+            {
+              "alias": "blocks",
+              "label": "Available Blocks",
+              "description": "Define the available blocks.",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.BlockListTypeConfiguration"
+            },
+            {
+              "alias": "validationLimit",
+              "label": "Amount",
+              "description": "Set a required range of blocks",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.NumberRange",
+              "config": [{ "alias": "validationRange", "value": { "min": 0 } }]
+            },
+            {
+              "alias": "typeConverter",
+              "label": "Type Converter",
+              "description": "Select the type converter used for converting the block list value into a custom CLR type.",
+              "propertyEditorUiAlias": "Limbo.PropertyEditorUi.BlockList.TypeConverter"
+            },
+            {
+              "alias": "cacheLevel",
+              "label": "Cache Level",
+              "description": "Select the cache level of the underlying property value converter.",
+              "propertyEditorUiAlias": "Limbo.PropertyEditorUi.BlockList.CacheLevel"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "propertyEditorUi",
+      "alias": "Limbo.PropertyEditorUi.BlockList",
+      "name": "Limbo Block List Property Editor UI",
+      "element": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-block-list.element.js",
+      "meta": {
+        "label": "Limbo Block List",
+        "propertyEditorSchemaAlias": "Limbo.Umbraco.BlockList",
+        "icon": "icon-thumbnail-list",
+        "group": "richContent",
+        "supportsReadOnly": true,
+        "settings": {
+          "properties": [
+            {
+              "alias": "useLiveEditing",
+              "label": "Live editing mode",
+              "description": "Live editing in editor overlays for live updated custom views or labels using custom expression.",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.Toggle"
+            },
+            {
+              "alias": "useInlineEditingAsDefault",
+              "label": "Inline editing mode",
+              "description": "Use the inline editor as the default block view.",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.Toggle"
+            },
+            {
+              "alias": "maxPropertyWidth",
+              "label": "Property editor width",
+              "description": "Optional CSS override, example: 800px or 100%",
+              "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextBox"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "propertyEditorUi",
+      "alias": "Limbo.PropertyEditorUi.BlockList.TypeConverter",
+      "name": "Limbo Block List Type Converter Property Editor UI",
+      "element": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-type-converter.element.js",
+      "meta": {
+        "label": "Limbo Block List Type Converter",
+        "icon": "icon-autofill",
+        "group": "common"
+      }
+    },
+    {
+      "type": "propertyEditorUi",
+      "alias": "Limbo.PropertyEditorUi.BlockList.CacheLevel",
+      "name": "Limbo Block List Cache Level Property Editor UI",
+      "element": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-editor-ui-cache-level.element.js",
+      "meta": {
+        "label": "Limbo Block List Cache Level",
+        "icon": "icon-box",
+        "group": "common"
+      }
+    },
+    {
+      "type": "propertyValueResolver",
+      "alias": "Limbo.PropertyValueResolver.BlockList",
+      "name": "Limbo Block List Value Resolver",
+      "api": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-value-resolver.js",
+      "forEditorAlias": "Limbo.Umbraco.BlockList"
+    },
+    {
+      "type": "propertyValueCloner",
+      "alias": "Limbo.PropertyValueCloner.BlockList",
+      "name": "Limbo Block List Value Cloner",
+      "api": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-value-cloner.js",
+      "forEditorAlias": "Limbo.Umbraco.BlockList"
+    },
+    {
+      "type": "propertyValidationPathTranslator",
+      "alias": "Limbo.PropertyValidationPathTranslator.BlockList",
+      "name": "Limbo Block List Property Validation Path Translator",
+      "api": "/App_Plugins/Limbo.Umbraco.BlockList/js/property-validation-path-translator.js",
+      "forEditorAlias": "Limbo.Umbraco.BlockList"
+    },
+    {
+      "type": "propertyContext",
+      "kind": "sortMode",
+      "alias": "Limbo.PropertyContext.BlockList.SortMode",
+      "name": "Limbo Block List Sort Mode Property Context",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"]
+    },
+    {
+      "type": "propertyAction",
+      "kind": "sortMode",
+      "alias": "Limbo.PropertyAction.BlockList.SortMode",
+      "name": "Limbo Block List Sort Mode Property Action",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"],
+      "conditions": [{ "alias": "Umb.Condition.Property.HasValue" }]
+    },
+    {
+      "type": "propertyContext",
+      "kind": "clipboard",
+      "alias": "Limbo.PropertyContext.BlockList.Clipboard",
+      "name": "Limbo Block List Clipboard Property Context",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"]
+    },
+    {
+      "type": "propertyAction",
+      "kind": "copyToClipboard",
+      "alias": "Limbo.PropertyAction.BlockList.Clipboard.Copy",
+      "name": "Limbo Block List Copy To Clipboard Property Action",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"],
+      "conditions": [{ "alias": "Umb.Condition.Property.HasValue" }]
+    },
+    {
+      "type": "propertyAction",
+      "kind": "pasteFromClipboard",
+      "alias": "Limbo.PropertyAction.BlockList.Clipboard.Paste",
+      "name": "Limbo Block List Paste From Clipboard Property Action",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"],
+      "conditions": [{ "alias": "Umb.Condition.Property.Writable" }]
+    },
+    {
+      "type": "clipboardCopyPropertyValueTranslator",
+      "alias": "Limbo.ClipboardCopyPropertyValueTranslator.BlockListToBlock",
+      "name": "Limbo Block List To Block Clipboard Copy Property Value Translator",
+      "api": "/App_Plugins/Limbo.Umbraco.BlockList/js/clipboard-copy-translator.js",
+      "fromPropertyEditorUi": "Limbo.PropertyEditorUi.BlockList",
+      "toClipboardEntryValueType": "block"
+    },
+    {
+      "type": "clipboardPastePropertyValueTranslator",
+      "alias": "Limbo.ClipboardPastePropertyValueTranslator.BlockToBlockList",
+      "name": "Limbo Block To Block List Clipboard Paste Property Value Translator",
+      "api": "/App_Plugins/Limbo.Umbraco.BlockList/js/clipboard-paste-translator.js",
+      "fromClipboardEntryValueType": "block",
+      "toPropertyEditorUi": "Limbo.PropertyEditorUi.BlockList"
+    },
+    {
+      "type": "propertyAction",
+      "kind": "clear",
+      "alias": "Limbo.PropertyAction.BlockList.Clear",
+      "name": "Clear Limbo Block List Property Action",
+      "forPropertyEditorUis": ["Limbo.PropertyEditorUi.BlockList"]
+    }
+  ]
+}
