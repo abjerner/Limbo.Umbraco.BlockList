@@ -31,6 +31,8 @@ public class LimboBlockListPropertyEditor : BlockListPropertyEditor {
 
     public const string EditorIcon = "icon-thumbnail-list";
 
+    public const string EditorGroup = "Limbo";
+
     #endregion
 
     #region Constructors
