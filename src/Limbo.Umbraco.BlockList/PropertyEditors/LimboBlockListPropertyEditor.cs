@@ -16,7 +16,7 @@ namespace Limbo.Umbraco.BlockList.PropertyEditors;
 /// <see cref="BlockListPropertyEditorBase"/>, as the variant merging logic relies on internal types and therefore
 /// can't be re-implemented outside of Umbraco.
 /// </remarks>
-[DataEditor(EditorAlias, ValueType = ValueTypes.Json, ValueEditorIsReusable = false)]
+[DataEditor(EditorAlias, ValueType = EditorValueType, ValueEditorIsReusable = false)]
 public class LimboBlockListPropertyEditor : BlockListPropertyEditor {
 
     private readonly IIOHelper _ioHelper;
@@ -32,6 +32,8 @@ public class LimboBlockListPropertyEditor : BlockListPropertyEditor {
     public const string EditorIcon = "icon-thumbnail-list";
 
     public const string EditorGroup = "Limbo";
+
+    public const string EditorValueType = ValueTypes.Json;
 
     #endregion
 
