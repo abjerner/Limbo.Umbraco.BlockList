@@ -52,13 +52,26 @@ public static class BlockListExtensions {
     }
 
     /// <summary>
+    /// Adds a new block configuration to <paramref name="config"/>.
+    /// </summary>
+    /// <typeparam name="TConfig">The type of the block list configuration.</typeparam>
+    /// <param name="config">The list configuration.</param>
+    /// <param name="block">The block configuration to be added.</param>
+    /// <remarks>
+    /// Umbraco internally stores the block configurations in an array, so this method will create a new array with the new block configuration added to the end of the existing array.
+    /// </remarks>
+    public static void AddBlock<TConfig>(this TConfig config, LimboBlockConfiguration block) where TConfig : LimboBlockListConfiguration {
+        config.Blocks = [.. config.Blocks, block];
+    }
+
+    /// <summary>
     /// Sets the value of the <see cref="BlockListConfiguration.Blocks"/> property.
     /// </summary>
     /// <typeparam name="TConfig">The type of the configuration.</typeparam>
     /// <param name="config">The configuration to change.</param>
     /// <param name="value">The new value.</param>
     /// <returns>The <typeparamref name="TConfig"/> instance - useful for method chaining.</returns>
-    public static TConfig SetBlocks<TConfig>(this TConfig config, BlockConfiguration[] value) where TConfig : LimboBlockListConfiguration {
+    public static TConfig SetBlocks<TConfig>(this TConfig config, LimboBlockConfiguration[] value) where TConfig : LimboBlockListConfiguration {
         config.Blocks = value;
         return config;
     }
@@ -70,7 +83,7 @@ public static class BlockListExtensions {
     /// <param name="config">The configuration to change.</param>
     /// <param name="value">The new value.</param>
     /// <returns>The <typeparamref name="TConfig"/> instance - useful for method chaining.</returns>
-    public static TConfig SetBlocks<TConfig>(this TConfig config, IEnumerable<BlockConfiguration> value) where TConfig : LimboBlockListConfiguration {
+    public static TConfig SetBlocks<TConfig>(this TConfig config, IEnumerable<LimboBlockConfiguration> value) where TConfig : LimboBlockListConfiguration {
         config.Blocks = [..value];
         return config;
     }

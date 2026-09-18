@@ -1,5 +1,4 @@
-// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
-
+using System.Linq;
 using System.Text.Json.Serialization;
 using Limbo.Umbraco.BlockList.Converters;
 using Limbo.Umbraco.BlockList.Models;
@@ -27,6 +26,31 @@ public class LimboBlockListConfiguration : BlockListConfiguration {
     /// </summary>
     [ConfigurationField("cacheLevel")]
     public PropertyCacheLevel? CacheLevel { get; set; }
+
+    /// <summary>
+    /// Gets or sets the block configurations.
+    /// </summary>
+    /// <remarks>
+    /// The underlying property in the base isn't marked as nullable, but Umbraco will save null values in the database if empty.
+    /// </remarks>
+    [ConfigurationField("blocks")]
+    public new LimboBlockConfiguration[]? Blocks {
+        get {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            if (base.Blocks is null) return null;
+            if (base.Blocks.Length == 0) return [];
+            return base.Blocks.Cast<LimboBlockConfiguration>().ToArray();
+        }
+        set {
+            if (value is null) {
+                base.Blocks = null!;
+            } else if (value.Length == 0) {
+                base.Blocks = [];
+            } else {
+                base.Blocks = value.Cast<BlockConfiguration>().ToArray();
+            }
+        }
+    }
 
     /// <summary>
     /// Gets or sets whether the editor should use live editing mode.
