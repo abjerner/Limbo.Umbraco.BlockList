@@ -61,7 +61,7 @@ public static class BlockListExtensions {
     /// Umbraco internally stores the block configurations in an array, so this method will create a new array with the new block configuration added to the end of the existing array.
     /// </remarks>
     public static void AddBlock<TConfig>(this TConfig config, LimboBlockConfiguration block) where TConfig : LimboBlockListConfiguration {
-        config.Blocks = [.. config.Blocks, block];
+        config.Blocks = config.Blocks is null ? [block] : [.. config.Blocks, block];
     }
 
     /// <summary>
