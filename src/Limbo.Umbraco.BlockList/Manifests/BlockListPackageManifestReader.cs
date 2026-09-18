@@ -224,7 +224,7 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             ToClipboardEntryValueType = "block"
         };
 
-        yield return new ClipboardPastePropertyValueTranslator {
+        yield return new ClipboardPastePropertyValueTranslatorExtension {
             Alias = $"{Alias}.ClipboardPastePropertyValueTranslator.BlockToBlockList",
             Name = $"{Name}: Clipboard Paste Property Value Translator",
             Api = $"/App_Plugins/{Alias}/js/clipboard-paste-translator.js",
