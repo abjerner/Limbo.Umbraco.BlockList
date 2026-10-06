@@ -34,7 +34,7 @@ const DEFAULT_LEVEL = 'Elements';
  *
  * Replaces the AngularJS "CacheLevel.html" view.
  */
-export class LimboPropertyEditorUiCacheLevelElement extends UmbLitElement {
+export class LimboCacheLevelPropertyEditorUiElement extends UmbLitElement {
 
 	static properties = {
 		value: { attribute: false },
@@ -109,6 +109,6 @@ export class LimboPropertyEditorUiCacheLevelElement extends UmbLitElement {
 
 }
 
-customElements.define('limbo-property-editor-ui-block-list-cache-level', LimboPropertyEditorUiCacheLevelElement);
+customElements.define('limbo-block-list-cache-level-property-editor-ui', LimboCacheLevelPropertyEditorUiElement);
 
-export default LimboPropertyEditorUiCacheLevelElement;
+export default LimboCacheLevelPropertyEditorUiElement;

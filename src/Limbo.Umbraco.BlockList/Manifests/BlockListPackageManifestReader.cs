@@ -85,12 +85,10 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
             }
         };
 
-
-
         yield return new PropertyEditorUiExtension {
             Alias = BlockListPropertyEditorUiAliases.BlockList,
             Name = $"{Name}: Block List Property Editor UI",
-            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-block-list.element.js",
+            Element = $"/App_Plugins/{Alias}/PropertyEditors/BlockList.js",
             Meta = new PropertyEditorUiMeta {
                 Label = "Limbo Block List",
                 PropertyEditorSchemaAlias = LimboBlockListPropertyEditor.EditorAlias,
@@ -134,25 +132,25 @@ public class BlockListPackageManifestReader : IPackageManifestReader {
         };
 
         yield return new PropertyEditorUiExtension {
-            Alias = BlockListPropertyEditorUiAliases.TypeConverter,
-            Name = $"{Name}: Type Converter Property Editor UI",
-            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-type-converter.element.js",
+            Alias = BlockListPropertyEditorUiAliases.CacheLevel,
+            Name = $"{Name}: Cache Level Property Editor UI",
+            Element = $"/App_Plugins/{Alias}/PropertyEditors/CacheLevel.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Block List Type Converter",
-                Icon = "icon-autofill",
-                Group = "common",
+                Label = "Limbo Block List Cache Level",
+                Icon = "icon-box",
+                Group = "Limbo",
                 PropertyEditorSchemaAlias = null!
             }
         };
 
         yield return new PropertyEditorUiExtension {
-            Alias = BlockListPropertyEditorUiAliases.CacheLevel,
-            Name = $"{Name}: Cache Level Property Editor UI",
-            Element = $"/App_Plugins/{Alias}/js/property-editor-ui-cache-level.element.js",
+            Alias = BlockListPropertyEditorUiAliases.TypeConverter,
+            Name = $"{Name}: Type Converter Property Editor UI",
+            Element = $"/App_Plugins/{Alias}/PropertyEditors/TypeConverter.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Block List Cache Level",
-                Icon = "icon-box",
-                Group = "common",
+                Label = "Limbo Block List Type Converter",
+                Icon = "icon-autofill",
+                Group = "Limbo",
                 PropertyEditorSchemaAlias = null!
             }
         };

@@ -1,5 +1,3 @@
-// [CHANGE: Umbraco 17 upgrade] Related: see documentation/umbraco-17-upgrade.md
-
 import { css, html, nothing } from '@umbraco-cms/backoffice/external/lit';
 import { UmbLitElement } from '@umbraco-cms/backoffice/lit-element';
 import { UmbFormControlMixin } from '@umbraco-cms/backoffice/validation';
@@ -23,7 +21,7 @@ const UMB_BLOCK_LIST_ELEMENT_NAME = 'umb-property-editor-ui-block-list';
  * "checkValidity". Without it, the validators Umbraco's block list element registers for the mandatory flag and for
  * the configured amount of blocks (min/max) would never reach the property, and content would save without errors.
  */
-export class LimboPropertyEditorUiBlockListElement extends UmbFormControlMixin(UmbLitElement, undefined) {
+export class LimboBlockListPropertyEditorUiElement extends UmbFormControlMixin(UmbLitElement, undefined) {
 
 	static properties = {
 		// "value" is intentionally not declared here - it is declared by "UmbFormControlMixin", and re-declaring it
@@ -139,6 +137,6 @@ export class LimboPropertyEditorUiBlockListElement extends UmbFormControlMixin(U
 
 }
 
-customElements.define('limbo-property-editor-ui-block-list', LimboPropertyEditorUiBlockListElement);
+customElements.define('limbo-block-list-property-editor-ui', LimboBlockListPropertyEditorUiElement);
 
-export default LimboPropertyEditorUiBlockListElement;
+export default LimboBlockListPropertyEditorUiElement;
