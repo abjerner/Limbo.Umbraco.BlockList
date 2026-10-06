@@ -49,16 +49,16 @@ For us at [**@limbo-works**](https://github.com/limbo-works), we find this parti
 
 ### Umbraco 17
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList/17.0.0-alpha002). To install the package, you can use either .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Limbo.Umbraco.BlockList). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.BlockList --version 17.0.0-alpha002
+dotnet add package Limbo.Umbraco.BlockList --version 17.0.0-alpha003
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.BlockList -Version 17.0.0-alpha002
+Install-Package Limbo.Umbraco.BlockList -Version 17.0.0-alpha003
 ```
 
 ### Other versions of Umbraco
